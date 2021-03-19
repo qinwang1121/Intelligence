@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name1">IntelligenceAdmin</string>
     <string name="app_name2">IntelligenceUser</string>
+    
+    <string name="menu_admin_home">HOME</string>
+    <string name="menu_admin_mistake">违规</string>
+    <string name="menu_myself">我的</string>
+    <string name="menu_user_consume">耗时</string>
 </resources>

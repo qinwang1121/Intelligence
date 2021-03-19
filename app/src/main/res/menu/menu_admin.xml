@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/mistake"
+        android:icon="@drawable/mistake"
+        android:title="@string/menu_admin_mistake" />
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/home"
+        android:title="@string/menu_admin_home" />
+    <item
+        android:id="@+id/myself"
+        android:icon="@drawable/myself"
+        android:title="@string/menu_myself" />
+</menu>

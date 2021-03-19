@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/user_navigation"
+    app:startDestination="@id/consumeFragment">
+
+    <fragment
+        android:id="@+id/consume"
+        android:name="com.qinwang.intelligence.fragment.ConsumeFragment"
+        android:label="ConsumeFragment" />
+    <fragment
+        android:id="@+id/myself"
+        android:name="com.qinwang.intelligence.fragment.MyselfFragment"
+        android:label="MyselfFragment" />
+</navigation>
