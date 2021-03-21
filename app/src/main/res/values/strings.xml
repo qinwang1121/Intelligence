@@ -6,4 +6,12 @@
     <string name="menu_admin_mistake">违规</string>
     <string name="menu_myself">我的</string>
     <string name="menu_user_consume">耗时</string>
+
+    <!-- LoginActivity -->
+    <string name="login_userName">用户名</string>
+    <string name="login_password">密码</string>
+    <string name="login">登录</string>
+    <string name="register">用户注册</string>
+    <string name="usernameError">用户名为空</string>
+    <string name="passwordError">密码为空</string>
 </resources>
