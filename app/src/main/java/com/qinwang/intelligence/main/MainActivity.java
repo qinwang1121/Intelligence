@@ -1,8 +1,10 @@
-package com.qinwang.intelligence;
+package com.qinwang.intelligence.main;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.qinwang.intelligence.R;
 
 public class MainActivity extends AppCompatActivity {
 

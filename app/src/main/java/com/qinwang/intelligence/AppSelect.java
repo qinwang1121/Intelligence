@@ -8,9 +8,9 @@ package com.qinwang.intelligence;
  * @function:
  */
 public class AppSelect {
-    private String appUser = null;
+    private static String appUser = null;
 
-    public String getAppUser() {
+    public static String getAppUser() {
         if (BuildConfig.PURPOSE.equals("admin")){
             appUser = "admin";
         }else if (BuildConfig.PURPOSE.equals("user")){
