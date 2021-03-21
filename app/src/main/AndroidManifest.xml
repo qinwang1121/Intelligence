@@ -12,10 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".fragment.myself.safety.SafetyActivity"
+        <activity android:name=".main.fragment.myself.safety.SafetyActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".fragment.myself.feedback.FeedbackActivity"
+        <activity android:name=".main.fragment.myself.feedback.FeedbackActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".register.RegisterActivity"

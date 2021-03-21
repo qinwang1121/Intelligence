@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/uploadFragment"
-        android:name="com.qinwang.intelligence.fragment.upload.UploadFragment"
+        android:name="com.qinwang.intelligence.main.fragment.upload.UploadFragment"
         android:label="UploadFragment" >
         <action
             android:id="@+id/action_uploadFragment_to_searchFragment"
@@ -13,7 +13,7 @@
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.qinwang.intelligence.fragment.search.SearchFragment"
+        android:name="com.qinwang.intelligence.main.fragment.search.SearchFragment"
         android:label="SearchFragment" >
         <action
             android:id="@+id/action_searchFragment_to_uploadFragment"

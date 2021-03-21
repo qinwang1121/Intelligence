@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/admin_navigation"
-    app:startDestination="@id/home">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/admin_navigation"
+    app:startDestination="@id/home"
+    tools:ignore="UnusedNavigation">
 
     <fragment
         android:id="@+id/home"
-        android:name="com.qinwang.intelligence.fragment.HomeFragment"
+        android:name="com.qinwang.intelligence.main.fragment.HomeFragment"
         android:label="HomeFragment" />
     <fragment
         android:id="@+id/mistake"
-        android:name="com.qinwang.intelligence.fragment.mistake.MistakeFragment"
+        android:name="com.qinwang.intelligence.main.fragment.mistake.MistakeFragment"
         android:label="MistakeFragment" />
     <fragment
         android:id="@+id/myself"
-        android:name="com.qinwang.intelligence.fragment.myself.MyselfFragment"
+        android:name="com.qinwang.intelligence.main.fragment.myself.MyselfFragment"
         android:label="MyselfFragment" />
 </navigation>
