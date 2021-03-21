@@ -13,4 +13,6 @@ public class BaseAPI {
     public final static String Base_URL = "http://169.254.65.42/transport/";
 
     public final static String URL_LOGIN = Base_URL + "login";
+
+    public final static String URL_FEEDBACK = Base_URL + "feedback";
 }

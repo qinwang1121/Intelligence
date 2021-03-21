@@ -9,6 +9,6 @@
         android:label="ConsumeFragment" />
     <fragment
         android:id="@+id/myself"
-        android:name="com.qinwang.intelligence.fragment.MyselfFragment"
+        android:name="com.qinwang.intelligence.fragment.myself.MyselfFragment"
         android:label="MyselfFragment" />
 </navigation>

@@ -8,4 +8,9 @@
     <color name="colorTitle">#FFFF5722</color>
 
     <color name="white">#FFFFFF</color>
+
+    <color name="colorLoading_text">#4CAF50</color>
+    <color name="colorMyselfBK">#F4EFEF</color>
+    <color name="colorButtonBg">#008577</color>
+
 </resources>

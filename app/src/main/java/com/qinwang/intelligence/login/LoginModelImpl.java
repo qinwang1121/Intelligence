@@ -38,32 +38,24 @@ public class LoginModelImpl extends BaseModelImpl implements LoginContract.Login
                 @Override
                 public void run() {
                     try {
-                        if (Utils.postUtil(Utils.postSet(BaseAPI.URL_LOGIN), map) != null){
-                            final Response<User> userResponse = new Gson().fromJson(new String(
-                                            Utils.postUtil(Utils.postSet(BaseAPI.URL_LOGIN),
-                                                    map)),
-                                    Response.class);
-                            if (userResponse.isSuccess()){
-                                activity.runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        listener.onSuccess(userResponse.getMsg());
-                                    }
-                                });
-                            }else {
-                                activity.runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        listener.onFail(String.valueOf(userResponse.getStatus()),
-                                                userResponse.getMsg());
-                                    }
-                                });
-                            }
+                        Utils.postUtil(Utils.postSet(BaseAPI.URL_LOGIN), map);
+                        final Response<User> userResponse = new Gson().fromJson(new String(
+                                        Utils.postUtil(Utils.postSet(BaseAPI.URL_LOGIN),
+                                                map)),
+                                Response.class);
+                        if (userResponse.isSuccess()){
+                            activity.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    listener.onSuccess(userResponse.getMsg());
+                                }
+                            });
                         }else {
                             activity.runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    listener.onFail("", activity.getApplicationContext().getString(R.string.netWorkError));
+                                    listener.onFail(String.valueOf(userResponse.getStatus()),
+                                            userResponse.getMsg());
                                 }
                             });
                         }
