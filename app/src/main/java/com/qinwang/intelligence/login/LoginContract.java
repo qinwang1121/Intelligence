@@ -1,5 +1,7 @@
 package com.qinwang.intelligence.login;
 
+import android.app.Activity;
+
 import com.qinwang.base.BaseContract;
 import com.qinwang.base.MVPLisenter;
 
@@ -23,14 +25,14 @@ public interface LoginContract {
 
     interface LoginModel extends BaseContract.BaseModel {
 
-        interface onLoginLisente extends MVPLisenter{
+        interface onLoginListener extends MVPLisenter{
 
             void onUserNameError();
 
             void onPassWordError();
         }
 
-        void onLogin(String userName, String passWord, onLoginLisente lisente);
+        void onLogin(Activity activity, String userName, String passWord, onLoginListener listener);
     }
 
     interface LoginPresenter{

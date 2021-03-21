@@ -1,11 +1,17 @@
 <resources>
     <string name="app_name1">IntelligenceAdmin</string>
     <string name="app_name2">IntelligenceUser</string>
-    
+
     <string name="menu_admin_home">HOME</string>
     <string name="menu_admin_mistake">违规</string>
     <string name="menu_myself">我的</string>
     <string name="menu_user_consume">耗时</string>
+
+    <!-- LoadingDialog -->
+    <string name="Loading_loading">加载中…</string>
+    <string name="Loading_login">登录中…</string>
+    <string name="Loading_upload">上传中…</string>
+    <string name="Loading_search">查询中…</string>
 
     <!-- LoginActivity -->
     <string name="login_userName">用户名</string>
@@ -14,4 +20,5 @@
     <string name="register">用户注册</string>
     <string name="usernameError">用户名为空</string>
     <string name="passwordError">密码为空</string>
+    <string name="netWorkError">请求失败</string>
 </resources>
