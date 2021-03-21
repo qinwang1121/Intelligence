@@ -9,7 +9,7 @@
         android:label="HomeFragment" />
     <fragment
         android:id="@+id/mistake"
-        android:name="com.qinwang.intelligence.fragment.MistakeFragment"
+        android:name="com.qinwang.intelligence.fragment.mistake.MistakeFragment"
         android:label="MistakeFragment" />
     <fragment
         android:id="@+id/myself"
