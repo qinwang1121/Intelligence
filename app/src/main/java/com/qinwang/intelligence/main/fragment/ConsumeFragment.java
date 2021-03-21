@@ -1,4 +1,4 @@
-package com.qinwang.intelligence.fragment;
+package com.qinwang.intelligence.main.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

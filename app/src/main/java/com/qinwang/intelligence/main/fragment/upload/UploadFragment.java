@@ -1,4 +1,4 @@
-package com.qinwang.intelligence.fragment.upload;
+package com.qinwang.intelligence.main.fragment.upload;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;

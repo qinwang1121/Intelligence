@@ -1,4 +1,4 @@
-package com.qinwang.intelligence.fragment;
+package com.qinwang.intelligence.main.fragment.search;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,12 +11,12 @@ import androidx.annotation.Nullable;
 import com.qinwang.base.BaseFragment;
 import com.qinwang.intelligence.R;
 
-public class HomeFragment extends BaseFragment {
+public class SearchFragment extends BaseFragment {
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        return inflater.inflate(R.layout.fragment_search, container, false);
     }
 
     @Override

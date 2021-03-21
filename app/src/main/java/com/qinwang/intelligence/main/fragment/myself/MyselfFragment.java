@@ -1,4 +1,4 @@
-package com.qinwang.intelligence.fragment.myself;
+package com.qinwang.intelligence.main.fragment.myself;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,8 +12,8 @@ import androidx.annotation.Nullable;
 import com.mylhyl.circledialog.CircleDialog;
 import com.qinwang.base.BaseFragment;
 import com.qinwang.intelligence.R;
-import com.qinwang.intelligence.fragment.myself.feedback.FeedbackActivity;
-import com.qinwang.intelligence.fragment.myself.safety.SafetyActivity;
+import com.qinwang.intelligence.main.fragment.myself.feedback.FeedbackActivity;
+import com.qinwang.intelligence.main.fragment.myself.safety.SafetyActivity;
 import com.qinwang.intelligence.login.LoginActivity;
 
 public class MyselfFragment extends BaseFragment implements View.OnClickListener {

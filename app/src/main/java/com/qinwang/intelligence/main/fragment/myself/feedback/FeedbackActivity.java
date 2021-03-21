@@ -1,4 +1,4 @@
-package com.qinwang.intelligence.fragment.myself.feedback;
+package com.qinwang.intelligence.main.fragment.myself.feedback;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;

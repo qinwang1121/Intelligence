@@ -1,4 +1,4 @@
-package com.qinwang.intelligence.fragment.mistake;
+package com.qinwang.intelligence.main.fragment.mistake;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

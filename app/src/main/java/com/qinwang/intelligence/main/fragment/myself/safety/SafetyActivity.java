@@ -1,4 +1,4 @@
-package com.qinwang.intelligence.fragment.myself.safety;
+package com.qinwang.intelligence.main.fragment.myself.safety;
 
 import android.os.Bundle;
 import android.view.Gravity;
