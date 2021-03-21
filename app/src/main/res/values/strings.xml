@@ -49,4 +49,14 @@
     <string name="feedback_mail_error">请正确填写邮箱</string>
     <string name="feedback_success">提交成功</string>
     <string name="feedback_fail">提交失败</string>
+
+    <!-- SafetyActivity -->
+    <string name="safetyTitle">我的信息</string>
+    <string name="userName">姓名:</string>
+    <string name="userGander">性别:</string>
+    <string name="userId">身份证号:</string>
+    <string name="userPassword">密码:</string>
+    <string name="userTel">电话:</string>
+    <string name="userHome">住址:</string>
+    <string name="makeSure">确定</string>
 </resources>
