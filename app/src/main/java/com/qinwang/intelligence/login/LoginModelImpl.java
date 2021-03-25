@@ -38,7 +38,6 @@ public class LoginModelImpl extends BaseModelImpl implements LoginContract.Login
                 @Override
                 public void run() {
                     try {
-                        Utils.postUtil(Utils.postSet(BaseAPI.URL_LOGIN), map);
                         final Response<User> userResponse = new Gson().fromJson(new String(
                                         Utils.postUtil(Utils.postSet(BaseAPI.URL_LOGIN),
                                                 map)),

@@ -17,13 +17,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.mylhyl.circledialog.CircleDialog;
 import com.qinwang.base.BaseFragment;
 import com.qinwang.intelligence.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class UploadFragment extends BaseFragment {
+public class UploadFragment extends BaseFragment implements UploadingConstract.UploadingView, View.OnClickListener {
 
     private final String TAG = "UploadingFragment";
 
@@ -35,6 +36,8 @@ public class UploadFragment extends BaseFragment {
             motorcycle, other,
             colorBlue, colorYellow, colorGreen, colorWhite, colorBlack;
     private TextView spaceType, spaceColor;
+
+    private UploadingConstract.UploadingPresenter mUploadingPresenter;
 
     private String carType = null, boardColor = null;
 
@@ -56,6 +59,9 @@ public class UploadFragment extends BaseFragment {
         getTime();
         carTypeListen();
         boardColorListen();
+
+        mUploadingPresenter = new UploadingPresenterImpl(getActivity(), this);
+
     }
 
     public void initView(){
@@ -86,6 +92,9 @@ public class UploadFragment extends BaseFragment {
         colorWhite = getView().findViewById(R.id.colorWhite);
         colorBlack = getView().findViewById(R.id.colorBlack);
 
+        getView().findViewById(R.id.button_uploading)
+                .setOnClickListener(this);
+
         mistakeTime.setFocusable(false);//设置为不可编辑
         mistakePlace.setFocusable(false);
         policeName.setFocusable(false);
@@ -112,6 +121,8 @@ public class UploadFragment extends BaseFragment {
                     motorcycle.setChecked(false);
                     other.setChecked(false);
                     getCarType(carBig.getText().toString());
+                }else {
+                    getCarType("");
                 }
             }
         });
@@ -125,6 +136,8 @@ public class UploadFragment extends BaseFragment {
                     motorcycle.setChecked(false);
                     other.setChecked(false);
                     getCarType(carSmall.getText().toString());
+                }else {
+                    getCarType("");
                 }
             }
         });
@@ -138,6 +151,8 @@ public class UploadFragment extends BaseFragment {
                     motorcycle.setChecked(false);
                     other.setChecked(false);
                     getCarType(truckBig.getText().toString());
+                }else {
+                    getCarType("");
                 }
             }
         });
@@ -151,6 +166,8 @@ public class UploadFragment extends BaseFragment {
                     motorcycle.setChecked(false);
                     other.setChecked(false);
                     getCarType(truckSmall.getText().toString());
+                }else {
+                    getCarType("");
                 }
             }
         });
@@ -164,6 +181,8 @@ public class UploadFragment extends BaseFragment {
                     truckSmall.setChecked(false);
                     other.setChecked(false);
                     getCarType(motorcycle.getText().toString());
+                }else {
+                    getCarType("");
                 }
             }
         });
@@ -195,6 +214,8 @@ public class UploadFragment extends BaseFragment {
                     colorWhite.setChecked(false);
                     colorBlack.setChecked(false);
                     getBoardColor(colorBlue.getText().toString());
+                }else {
+                    getBoardColor("");
                 }
             }
         });
@@ -207,6 +228,8 @@ public class UploadFragment extends BaseFragment {
                     colorWhite.setChecked(false);
                     colorBlack.setChecked(false);
                     getBoardColor(colorYellow.getText().toString());
+                }else {
+                    getBoardColor("");
                 }
             }
         });
@@ -219,6 +242,8 @@ public class UploadFragment extends BaseFragment {
                     colorWhite.setChecked(false);
                     colorBlack.setChecked(false);
                     getBoardColor(colorGreen.getText().toString());
+                }else {
+                    getBoardColor("");
                 }
             }
         });
@@ -231,6 +256,8 @@ public class UploadFragment extends BaseFragment {
                     colorGreen.setChecked(false);
                     colorBlack.setChecked(false);
                     getBoardColor(colorWhite.getText().toString());
+                }else {
+                    getBoardColor("");
                 }
             }
         });
@@ -243,6 +270,8 @@ public class UploadFragment extends BaseFragment {
                     colorGreen.setChecked(false);
                     colorWhite.setChecked(false);
                     getBoardColor(colorBlack.getText().toString());
+                }else {
+                    getBoardColor("");
                 }
             }
         });
@@ -256,6 +285,7 @@ public class UploadFragment extends BaseFragment {
     public void hideLayoutOtherType() {
         layoutOtherType.setVisibility(View.GONE);
         otherType.setText(null);
+        getCarType("");
     }
 
     @SuppressLint("HandlerLeak")
@@ -269,6 +299,100 @@ public class UploadFragment extends BaseFragment {
         };
         Threads mThreads = new Threads();
         mThreads.start();
+    }
+
+    @Override
+    public void showCarNumberError() {
+        carNumber.setError(getString(R.string.errorCarNumber));
+    }
+
+    @Override
+    public void showCarColorError() {
+        carColor.setError(getString(R.string.errorCarColor));
+    }
+
+    @Override
+    public void showTypeError() {
+        spaceType.setError(getString(R.string.errorType));
+    }
+
+    @Override
+    public void hideTypeError() {
+        spaceType.setError(null);
+    }
+
+    @Override
+    public void showBoardColorError() {
+        spaceColor.setError(getString(R.string.errorBoardColor));
+    }
+
+    @Override
+    public void hideBoardColorError() {
+        spaceColor.setError(null);
+    }
+
+    @Override
+    public void showDescribeError() {
+        mistakeDescribe.setError(getString(R.string.errorDescribe));
+    }
+
+    @Override
+    public void showHintLog(String msg, View.OnClickListener listener) {
+        new CircleDialog.Builder(getActivity())
+                .setTitle(getString(R.string.Dialog_title))
+                .setText(msg)
+                .setPositive(getString(R.string.Dialog_true), listener)
+                .show();
+    }
+
+    @Override
+    public void empty() {
+        carNumber.setText(null);
+        carColor.setText(null);
+
+        carBig.setChecked(false);
+        carSmall.setChecked(false);
+        truckBig.setChecked(false);
+        truckSmall.setChecked(false);
+        motorcycle.setChecked(false);
+        other.setChecked(false);
+
+        colorBlue.setChecked(false);
+        colorYellow.setChecked(false);
+        colorGreen.setChecked(false);
+        colorWhite.setChecked(false);
+        colorBlack.setChecked(false);
+
+        mistakeDescribe.setText(null);
+
+        getCarType("");
+        getBoardColor("");
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view.getId() == R.id.button_uploading){
+            if (isClick){
+                mUploadingPresenter.validateUploading(carNumber.getText().toString(),
+                        carColor.getText().toString(),
+                        otherType.getText().toString(),
+                        boardColor,
+                        mistakeTime.getText().toString(),
+                        mistakePlace.getText().toString(),
+                        mistakeDescribe.getText().toString(),
+                        policeName.getText().toString());
+            }else {
+                mUploadingPresenter.validateUploading(carNumber.getText().toString(),
+                        carColor.getText().toString(),
+                        carType,
+                        boardColor,
+                        mistakeTime.getText().toString(),
+                        mistakePlace.getText().toString(),
+                        mistakeDescribe.getText().toString(),
+                        policeName.getText().toString());
+            }
+            Log.d(TAG, mistakeTime.getText().toString());
+        }
     }
 
     class Threads extends Thread{

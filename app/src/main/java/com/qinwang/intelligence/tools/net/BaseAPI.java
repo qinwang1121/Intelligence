@@ -15,4 +15,6 @@ public class BaseAPI {
     public final static String URL_LOGIN = Base_URL + "login";
 
     public final static String URL_FEEDBACK = Base_URL + "feedback";
+
+    public final static String URL_UPLOADING = Base_URL + "insert";
 }
