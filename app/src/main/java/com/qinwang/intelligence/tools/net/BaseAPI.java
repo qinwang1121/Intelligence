@@ -17,4 +17,6 @@ public class BaseAPI {
     public final static String URL_FEEDBACK = Base_URL + "feedback";
 
     public final static String URL_UPLOADING = Base_URL + "insert";
+
+    public final static String URL_SEARCH = Base_URL + "message";
 }
