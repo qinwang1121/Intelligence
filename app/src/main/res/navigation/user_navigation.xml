@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/consume"
-        android:name="com.qinwang.intelligence.main.fragment.ConsumeFragment"
+        android:name="com.qinwang.intelligence.main.fragment.consume.ConsumeFragment"
         android:label="ConsumeFragment" />
     <fragment
         android:id="@+id/myself"

@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/home"
-        android:name="com.qinwang.intelligence.main.fragment.HomeFragment"
+        android:name="com.qinwang.intelligence.main.fragment.home.HomeFragment"
         android:label="HomeFragment" />
     <fragment
         android:id="@+id/mistake"
