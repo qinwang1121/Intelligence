@@ -13,4 +13,6 @@
     <color name="colorMyselfBK">#F4EFEF</color>
     <color name="colorButtonBg">#008577</color>
 
+    <color name="msgBackColorPrimary">#666200EE</color>
+
 </resources>
