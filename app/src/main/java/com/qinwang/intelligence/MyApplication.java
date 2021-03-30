@@ -15,6 +15,8 @@ import com.baidu.mapapi.SDKInitializer;
 public class MyApplication extends Application {
     public static boolean isFirstLogin = true;
 
+    public static String SERVE_KEY = "Cxz3Gc2UCPRVGk9X8PR7rH9SZGfb4rNF";
+
     @Override
     public void onCreate() {
         super.onCreate();
