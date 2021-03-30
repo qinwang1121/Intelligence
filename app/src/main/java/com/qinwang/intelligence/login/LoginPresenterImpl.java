@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
+import com.qinwang.intelligence.MyApplication;
 import com.qinwang.intelligence.R;
 import com.qinwang.intelligence.tools.bean.User;
 
@@ -44,17 +45,18 @@ public class LoginPresenterImpl implements LoginContract.LoginPresenter{
 
             @Override
             public void onSuccess(String msg, User data) {
+                MyApplication.isFirstLogin = false;
                 mLoginView.postToHome();
                 mLoginView.showToast(msg);
                 mLoginView.hideLoading("");
                 SharedPreferences sharedPreferences = activity.getApplicationContext().getSharedPreferences("user", Context.MODE_PRIVATE);
                 @SuppressLint("CommitPrefEdits") SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString("userName", data.getUserName());
-                editor.putString("passWord", data.getUserName());
-                editor.putString("gender", data.getUserName());
-                editor.putString("ID", data.getUserName());
-                editor.putString("phone", data.getUserName());
-                editor.putString("home", data.getUserName());
+                editor.putString("passWord", data.getPassWord());
+                editor.putString("gender", data.getGender());
+                editor.putString("ID", data.getID());
+                editor.putString("phone", data.getPhone());
+                editor.putString("home", data.getHome());
                 editor.putString("photo", data.getPhoto());
                 editor.apply();
             }

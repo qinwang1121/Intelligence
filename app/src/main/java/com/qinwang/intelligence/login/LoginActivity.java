@@ -1,6 +1,8 @@
 package com.qinwang.intelligence.login;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 
 import com.qinwang.base.BaseActivity;
 import com.qinwang.intelligence.AppSelect;
+import com.qinwang.intelligence.MyApplication;
 import com.qinwang.intelligence.R;
 import com.qinwang.intelligence.main.MainActivity;
 import com.qinwang.intelligence.register.RegisterActivity;
@@ -52,6 +55,14 @@ public class LoginActivity extends BaseActivity implements LoginContract.LoginVi
 
         mLoginPresenter = new LoginPresenterImpl(LoginActivity.this,
                 this);
+
+        if (!MyApplication.isFirstLogin){
+            SharedPreferences sharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE);
+//            userName_editText.setText(sharedPreferences.getString("userName", null));
+//            password_editText.setText(sharedPreferences.getString("passWord", null));
+            mLoginPresenter.validateLogin(sharedPreferences.getString("userName", null),
+                    sharedPreferences.getString("passWord", null));
+        }
     }
 
     @Override

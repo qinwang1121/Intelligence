@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 
 import com.mylhyl.circledialog.CircleDialog;
 import com.qinwang.base.BaseFragment;
+import com.qinwang.intelligence.MyApplication;
 import com.qinwang.intelligence.R;
 import com.qinwang.intelligence.main.fragment.myself.feedback.FeedbackActivity;
 import com.qinwang.intelligence.main.fragment.myself.safety.SafetyActivity;
@@ -79,6 +80,7 @@ public class MyselfFragment extends BaseFragment implements View.OnClickListener
                     @Override
                     public void onClick(View view) {
                         getActivity().finish();
+                        MyApplication.isFirstLogin = true;
                         startActivity(new Intent(getActivity(),
                                 LoginActivity.class));
                     }
