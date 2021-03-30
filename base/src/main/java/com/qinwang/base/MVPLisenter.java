@@ -7,9 +7,9 @@ package com.qinwang.base;
  * @Version:1.0
  * @function:
  */
-public interface MVPLisenter {
+public interface MVPLisenter<T> {
 
-    void onSuccess(String msg);
+    void onSuccess(String msg, T data);
 
     void onFail(String status, String msg);
 

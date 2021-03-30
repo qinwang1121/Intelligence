@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.text.TextUtils;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.qinwang.intelligence.R;
 import com.qinwang.intelligence.tools.bean.Mistake;
 import com.qinwang.intelligence.tools.bean.Response;
@@ -22,7 +23,7 @@ import java.util.LinkedHashMap;
 public class UploadingModelImpl implements UploadingConstract.UploadingModel {
     @Override
     public void uploading(final Activity activity, String carNumber, String carColor, String carType, String boardColor,
-                          String mistakeTime, String mistakePlace, String mistakeDescribe, String policeName, final onUploadingListener listener) {
+                          String mistakeTime, String mistakePlace, final String mistakeDescribe, String policeName, final onUploadingListener<Mistake> listener) {
         final LinkedHashMap<String, String> map = new LinkedHashMap<>();
         map.put("carBoardID", carNumber);
         map.put("carColor", carColor);
@@ -60,12 +61,14 @@ public class UploadingModelImpl implements UploadingConstract.UploadingModel {
                     try {
                         final Response<Mistake> mistakeResponse = new Gson().fromJson(new String(
                                 Utils.postUtil(Utils.postSet(BaseAPI.URL_UPLOADING),
-                                        map)), Response.class);
+                                        map)),
+                                new TypeToken<Response<Mistake>>(){}.getType());
                         if (mistakeResponse.isSuccess()){
                             activity.runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    listener.onSuccess(mistakeResponse.getMsg());
+                                    listener.onSuccess(mistakeResponse.getMsg(),
+                                            mistakeResponse.getData());
                                 }
                             });
                         }else {

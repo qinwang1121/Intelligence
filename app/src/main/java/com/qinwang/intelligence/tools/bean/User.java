@@ -23,6 +23,17 @@ public class User {
 
     private String photo;
 
+    public User(String userName, String passWord, String gender,
+                String ID, String phone, String home, String photo){
+        this.userName = userName;
+        this.passWord = passWord;
+        this.gender = gender;
+        this.ID = ID;
+        this.phone = phone;
+        this.home = home;
+        this.photo = photo;
+    }
+
     public String getUserName() {
         return userName;
     }

@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.qinwang.base.BaseContract;
 import com.qinwang.base.MVPLisenter;
+import com.qinwang.intelligence.tools.bean.Mistake;
 
 /**
  * @Auther:haoyanwang1121@gmail.com
@@ -35,7 +36,7 @@ public interface UploadingConstract {
     }
 
     interface UploadingModel extends BaseContract.BaseModel{
-        interface onUploadingListener extends MVPLisenter{
+        interface onUploadingListener<Mistake> extends MVPLisenter<Mistake>{
             void onCarNumberError();
 
             void onCarColorError();
@@ -53,7 +54,7 @@ public interface UploadingConstract {
 
         void uploading(Activity activity, String carNumber, String carColor, String carType,
                        String boardColor, String mistakeTime, String mistakePlace,
-                       String mistakeDescribe, String policeName, onUploadingListener listener);
+                       String mistakeDescribe, String policeName, onUploadingListener<Mistake> listener);
     }
 
     interface UploadingPresenter{

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.view.View;
 
 import com.qinwang.intelligence.R;
+import com.qinwang.intelligence.tools.bean.FeedBack;
 
 /**
  * @Auther:haoyanwang1121@gmail.com
@@ -12,7 +13,7 @@ import com.qinwang.intelligence.R;
  * @Version:1.0
  * @function:
  */
-public class FeedbackPresenterImpl implements FeedbackContract.FeedbackPresenter, FeedbackContract.FeedbackModel.onFeedbackListener {
+public class FeedbackPresenterImpl implements FeedbackContract.FeedbackPresenter, FeedbackContract.FeedbackModel.onFeedbackListener<FeedBack> {
 
     private Activity mActivity;
     private FeedbackContract.FeedbackView mFeedbackView;
@@ -51,7 +52,7 @@ public class FeedbackPresenterImpl implements FeedbackContract.FeedbackPresenter
     }
 
     @Override
-    public void onSuccess(String msg) {
+    public void onSuccess(String msg, FeedBack data) {
         mFeedbackView.showToast(msg);
         mFeedbackView.hideLoading("");
         mFeedbackView.showHintDialog(msg,

@@ -1,8 +1,13 @@
 package com.qinwang.intelligence.login;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.qinwang.intelligence.R;
+import com.qinwang.intelligence.tools.bean.User;
 
 /**
  * @Auther:haoyanwang1121@gmail.com
@@ -11,7 +16,7 @@ import com.qinwang.intelligence.R;
  * @Version:1.0
  * @function:
  */
-public class LoginPresenterImpl implements LoginContract.LoginPresenter, LoginContract.LoginModel.onLoginListener {
+public class LoginPresenterImpl implements LoginContract.LoginPresenter{
 
     private Activity activity;
     private LoginContract.LoginView mLoginView;
@@ -26,34 +31,44 @@ public class LoginPresenterImpl implements LoginContract.LoginPresenter, LoginCo
     @Override
     public void validateLogin(String userName, String passWord) {
         mLoginView.showLoading("",activity.getApplicationContext().getString(R.string.Loading_login));
-        mLoginModel.onLogin(activity, userName, passWord, this);
+        mLoginModel.onLogin(activity, userName, passWord, new LoginContract.LoginModel.onLoginListener<User>() {
+            @Override
+            public void onUserNameError() {
+                mLoginView.showUserNameError();
+            }
+
+            @Override
+            public void onPassWordError() {
+                mLoginView.showPassWordError();
+            }
+
+            @Override
+            public void onSuccess(String msg, User data) {
+                mLoginView.postToHome();
+                mLoginView.showToast(msg);
+                mLoginView.hideLoading("");
+                SharedPreferences sharedPreferences = activity.getApplicationContext().getSharedPreferences("user", Context.MODE_PRIVATE);
+                @SuppressLint("CommitPrefEdits") SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("userName", data.getUserName());
+                editor.putString("passWord", data.getUserName());
+                editor.putString("gender", data.getUserName());
+                editor.putString("ID", data.getUserName());
+                editor.putString("phone", data.getUserName());
+                editor.putString("home", data.getUserName());
+                editor.putString("photo", data.getPhoto());
+                editor.apply();
+            }
+
+            @Override
+            public void onFail(String status, String msg) {
+                mLoginView.showToast(msg);
+                mLoginView.hideLoading("");
+            }
+        });
     }
 
     @Override
     public void onDestroy() {
         mLoginView = null;
-    }
-
-    @Override
-    public void onUserNameError() {
-        mLoginView.showUserNameError();
-    }
-
-    @Override
-    public void onPassWordError() {
-        mLoginView.showPassWordError();
-    }
-
-    @Override
-    public void onSuccess(String msg) {
-        mLoginView.postToHome();
-        mLoginView.showToast(msg);
-        mLoginView.hideLoading("");
-    }
-
-    @Override
-    public void onFail(String status, String msg) {
-        mLoginView.showToast(msg);
-        mLoginView.hideLoading("");
     }
 }

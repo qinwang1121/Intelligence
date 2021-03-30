@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.view.View;
 
 import com.qinwang.intelligence.R;
+import com.qinwang.intelligence.tools.bean.Mistake;
 
 /**
  * @Auther:haoyanwang1121@gmail.com
@@ -12,7 +13,7 @@ import com.qinwang.intelligence.R;
  * @Version:1.0
  * @function:
  */
-public class UploadingPresenterImpl implements UploadingConstract.UploadingPresenter, UploadingConstract.UploadingModel.onUploadingListener{
+public class UploadingPresenterImpl implements UploadingConstract.UploadingPresenter, UploadingConstract.UploadingModel.onUploadingListener<Mistake>{
 
     private Activity mActivity;
     private UploadingConstract.UploadingModel mUploadingModel;
@@ -96,7 +97,7 @@ public class UploadingPresenterImpl implements UploadingConstract.UploadingPrese
     }
 
     @Override
-    public void onSuccess(String msg) {
+    public void onSuccess(String msg, Mistake data) {
         if (mUploadingView != null){
             mUploadingView.hideLoading("");
             mUploadingView.showHintLog(msg,

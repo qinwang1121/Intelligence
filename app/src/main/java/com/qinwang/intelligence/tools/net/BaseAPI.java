@@ -11,6 +11,7 @@ public class BaseAPI {
 
     //寝室测试接口
     public final static String Base_URL = "http://169.254.65.42/transport/";
+//    public final static String Base_URL = "http://192.168.43.232/transport/";
 
     public final static String URL_LOGIN = Base_URL + "login";
 

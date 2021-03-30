@@ -4,6 +4,7 @@ import android.app.Activity;
 
 import com.qinwang.base.BaseContract;
 import com.qinwang.base.MVPLisenter;
+import com.qinwang.intelligence.tools.bean.User;
 
 /**
  * @Auther:haoyanwang1121@gmail.com
@@ -25,14 +26,14 @@ public interface LoginContract {
 
     interface LoginModel extends BaseContract.BaseModel {
 
-        interface onLoginListener extends MVPLisenter{
+        interface onLoginListener<User> extends MVPLisenter<User>{
 
             void onUserNameError();
 
             void onPassWordError();
         }
 
-        void onLogin(Activity activity, String userName, String passWord, onLoginListener listener);
+        void onLogin(Activity activity, String userName, String passWord, onLoginListener<User> listener);
     }
 
     interface LoginPresenter{

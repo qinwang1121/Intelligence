@@ -19,8 +19,20 @@ public class CarMsg<T> {
     private String carColor;
     private String carBoardID;
     private String carBoardColor;
-
     public List<T> list;
+
+    public CarMsg(String carUserName, String carUserId, String carUserGender,
+                  String carName, String carType, String carColor, String carBoardColor,
+                  List<T> list){
+        this.carUserName = carUserName;
+        this.carUserId = carUserId;
+        this.carUserGender = carUserGender;
+        this.carName = carName;
+        this.carType = carType;
+        this.carColor = carColor;
+        this.carBoardColor = carBoardColor;
+        this.list = list;
+    }
 
     public String getCarUserName() {
         return carUserName;

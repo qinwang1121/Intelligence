@@ -1,8 +1,11 @@
 package com.qinwang.intelligence.main.fragment.search;
 
 import android.app.Activity;
+import android.util.Log;
 
 import com.qinwang.intelligence.R;
+import com.qinwang.intelligence.tools.bean.CarMsg;
+import com.qinwang.intelligence.tools.bean.Mistake;
 
 /**
  * @Auther:haoyanwang1121@gmail.com
@@ -11,7 +14,7 @@ import com.qinwang.intelligence.R;
  * @Version:1.0
  * @function:
  */
-public class SearchPresenterImpl implements SearchContract.SearchPresenter, SearchContract.SearchModel.onSearchListener {
+public class SearchPresenterImpl implements SearchContract.SearchPresenter, SearchContract.SearchModel.onSearchListener<CarMsg<Mistake>> {
 
     private Activity mActivity;
     private SearchContract.SearchView mSearchView;
@@ -45,10 +48,10 @@ public class SearchPresenterImpl implements SearchContract.SearchPresenter, Sear
     }
 
     @Override
-    public void onSuccess(String msg) {
+    public void onSuccess(String msg, CarMsg<Mistake> data) {
         if (mSearchView != null){
             mSearchView.showToast(msg);
-            mSearchView.showMsgView();
+            mSearchView.showMsgView(data);
             mSearchView.hideLoading("");
         }
     }
@@ -57,6 +60,7 @@ public class SearchPresenterImpl implements SearchContract.SearchPresenter, Sear
     public void onFail(String status, String msg) {
         if (mSearchView != null){
             mSearchView.showToast(msg);
+            Log.d("SEARCH", msg);
             mSearchView.hideLoading("");
         }
     }

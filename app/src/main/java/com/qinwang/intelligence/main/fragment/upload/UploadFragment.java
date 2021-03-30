@@ -1,6 +1,9 @@
 package com.qinwang.intelligence.main.fragment.upload;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -23,6 +26,7 @@ import com.qinwang.intelligence.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Objects;
 
 public class UploadFragment extends BaseFragment implements UploadingConstract.UploadingView, View.OnClickListener {
 
@@ -60,8 +64,10 @@ public class UploadFragment extends BaseFragment implements UploadingConstract.U
         carTypeListen();
         boardColorListen();
 
-        mUploadingPresenter = new UploadingPresenterImpl(getActivity(), this);
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("user", Context.MODE_PRIVATE);
+        policeName.setText(sharedPreferences.getString("userName", null));
 
+        mUploadingPresenter = new UploadingPresenterImpl(getActivity(), this);
     }
 
     public void initView(){
@@ -98,6 +104,7 @@ public class UploadFragment extends BaseFragment implements UploadingConstract.U
         mistakeTime.setFocusable(false);//设置为不可编辑
         mistakePlace.setFocusable(false);
         policeName.setFocusable(false);
+
     }
 
     public void getCarType(String type) {

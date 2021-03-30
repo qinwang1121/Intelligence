@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.text.TextUtils;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.qinwang.base.BaseModelImpl;
 import com.qinwang.intelligence.R;
 import com.qinwang.intelligence.tools.bean.FeedBack;
@@ -24,7 +25,7 @@ import java.util.regex.Pattern;
  */
 public class FeedbackModelImpl extends BaseModelImpl implements FeedbackContract.FeedbackModel {
     @Override
-    public void Feedback(final Activity activity, String Email, String message, final onFeedbackListener listener) {
+    public void Feedback(final Activity activity, String Email, String message, final onFeedbackListener<FeedBack> listener) {
         final LinkedHashMap<String, String>map = new LinkedHashMap<>();
         if (TextUtils.isEmpty(message)){
             listener.onDescribeError(activity.getApplicationContext()
@@ -47,12 +48,13 @@ public class FeedbackModelImpl extends BaseModelImpl implements FeedbackContract
                         final Response<FeedBack> feedBackResponse = new Gson().fromJson(new String(
                                 Utils.postUtil(Utils.postSet(BaseAPI.URL_FEEDBACK),
                                         map)),
-                                Response.class);
+                                new TypeToken<Response<FeedBack>>(){}.getType());
                         if (feedBackResponse.isSuccess()){
                             activity.runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    listener.onSuccess(feedBackResponse.getMsg());
+                                    listener.onSuccess(feedBackResponse.getMsg(),
+                                            feedBackResponse.getData());
                                 }
                             });
                         }else {

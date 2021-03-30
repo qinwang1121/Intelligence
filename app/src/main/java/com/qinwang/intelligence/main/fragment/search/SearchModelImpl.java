@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.text.TextUtils;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.qinwang.base.BaseModelImpl;
 import com.qinwang.intelligence.R;
 import com.qinwang.intelligence.tools.bean.CarMsg;
@@ -24,7 +25,7 @@ import java.util.LinkedHashMap;
 public class SearchModelImpl extends BaseModelImpl implements SearchContract.SearchModel {
 
     @Override
-    public void Search(final Activity activity, String msg, final onSearchListener listener) {
+    public void Search(final Activity activity, String msg, final onSearchListener<CarMsg<Mistake>> listener) {
 
         final LinkedHashMap<String,String> map = new LinkedHashMap<>();
         map.put("ID", msg);
@@ -38,12 +39,13 @@ public class SearchModelImpl extends BaseModelImpl implements SearchContract.Sea
                         final Response<CarMsg<Mistake>> carMsgResponse = new Gson().fromJson(new String(
                                 Utils.postUtil(Utils.postSet(BaseAPI.URL_SEARCH),
                                         map)),
-                                Response.class);
+                                new TypeToken<Response<CarMsg<Mistake>>>(){}.getType());
                         if (carMsgResponse.isSuccess()){
                             activity.runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    listener.onSuccess(carMsgResponse.getMsg());
+                                    listener.onSuccess(carMsgResponse.getMsg(),
+                                            carMsgResponse.getData());
                                 }
                             });
                         }else {
@@ -55,13 +57,14 @@ public class SearchModelImpl extends BaseModelImpl implements SearchContract.Sea
                                 }
                             });
                         }
-                    }catch (Exception e){
+                    }catch (final Exception e){
                         e.printStackTrace();
                         activity.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                listener.onFail("",
-                                        activity.getApplicationContext().getString(R.string.searchFail));
+//                                listener.onFail("",
+//                                        activity.getApplicationContext().getString(R.string.searchFail));
+                                listener.onFail("", e.toString());
                             }
                         });
                     }

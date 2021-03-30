@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.qinwang.base.BaseContract;
 import com.qinwang.base.MVPLisenter;
+import com.qinwang.intelligence.tools.bean.FeedBack;
 
 /**
  * @Auther:haoyanwang1121@gmail.com
@@ -26,13 +27,13 @@ public interface FeedbackContract {
     }
 
     interface FeedbackModel{
-        interface onFeedbackListener extends MVPLisenter {
+        interface onFeedbackListener<FeedBack> extends MVPLisenter<FeedBack> {
             void onDescribeError(String msg);
 
             void onEmailError(String msg);
         }
 
-        void Feedback(Activity activity, String Email, String message, onFeedbackListener listener);
+        void Feedback(Activity activity, String Email, String message, onFeedbackListener<FeedBack> listener);
     }
 
     interface FeedbackPresenter{
