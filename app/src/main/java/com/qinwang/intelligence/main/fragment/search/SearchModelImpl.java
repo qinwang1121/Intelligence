@@ -31,6 +31,8 @@ public class SearchModelImpl extends BaseModelImpl implements SearchContract.Sea
         map.put("ID", msg);
         if (TextUtils.isEmpty(msg)){
             listener.onSearchMsgError();
+            listener.onFail("",
+                    activity.getApplicationContext().getString(R.string.searchMsgError));
         }else {
             new Thread(new Runnable() {
                 @Override

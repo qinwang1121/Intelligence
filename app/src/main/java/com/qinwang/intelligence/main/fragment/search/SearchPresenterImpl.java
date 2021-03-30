@@ -60,7 +60,7 @@ public class SearchPresenterImpl implements SearchContract.SearchPresenter, Sear
     public void onFail(String status, String msg) {
         if (mSearchView != null){
             mSearchView.showToast(msg);
-            Log.d("SEARCH", msg);
+//            Log.d("SEARCH", msg);
             mSearchView.hideLoading("");
         }
     }

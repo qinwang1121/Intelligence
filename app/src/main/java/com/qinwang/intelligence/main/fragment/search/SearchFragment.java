@@ -24,7 +24,7 @@ public class SearchFragment extends BaseFragment implements SearchContract.Searc
     private LinearLayout layoutSearch;
 
     private TextView msgUserName, msgUserSex, msgUserID,
-            msgCarNumber, msgCarName, msgCarType, msgCarcolor,
+            msgCarNumber, msgCarName, msgCarType, msgCarColor,
             msgMistakeList;
 
     private SearchContract.SearchPresenter mSearchPresenter;
@@ -60,7 +60,7 @@ public class SearchFragment extends BaseFragment implements SearchContract.Searc
         msgCarNumber = getView().findViewById(R.id.msgCarNumber);
         msgCarName = getView().findViewById(R.id.msgCarName);
         msgCarType = getView().findViewById(R.id.msgCarType);
-        msgCarcolor = getView().findViewById(R.id.msgCarColor);
+        msgCarColor = getView().findViewById(R.id.msgCarColor);
 
         getView().findViewById(R.id.searchBut)
                 .setOnClickListener(this);
@@ -84,7 +84,7 @@ public class SearchFragment extends BaseFragment implements SearchContract.Searc
         msgCarNumber.setText(mistakeCarMsg.getCarBoardID() + "(" + mistakeCarMsg.getCarBoardColor() + ")");
         msgCarName.setText(mistakeCarMsg.getCarName());
         msgCarType.setText(mistakeCarMsg.getCarType());
-        msgCarcolor.setText(mistakeCarMsg.getCarColor());
+        msgCarColor.setText(mistakeCarMsg.getCarColor());
     }
 
     @Override
