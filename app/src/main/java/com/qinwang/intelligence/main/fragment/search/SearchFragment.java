@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -24,8 +25,8 @@ public class SearchFragment extends BaseFragment implements SearchContract.Searc
     private LinearLayout layoutSearch;
 
     private TextView msgUserName, msgUserSex, msgUserID,
-            msgCarNumber, msgCarName, msgCarType, msgCarColor,
-            msgMistakeList;
+            msgCarNumber, msgCarName, msgCarType, msgCarColor;
+    private ListView msgMistakeList;
 
     private SearchContract.SearchPresenter mSearchPresenter;
 
@@ -61,6 +62,7 @@ public class SearchFragment extends BaseFragment implements SearchContract.Searc
         msgCarName = getView().findViewById(R.id.msgCarName);
         msgCarType = getView().findViewById(R.id.msgCarType);
         msgCarColor = getView().findViewById(R.id.msgCarColor);
+        msgMistakeList = getView().findViewById(R.id.msgMistakeList);
 
         getView().findViewById(R.id.searchBut)
                 .setOnClickListener(this);
@@ -85,6 +87,9 @@ public class SearchFragment extends BaseFragment implements SearchContract.Searc
         msgCarName.setText(mistakeCarMsg.getCarName());
         msgCarType.setText(mistakeCarMsg.getCarType());
         msgCarColor.setText(mistakeCarMsg.getCarColor());
+
+        MyAdapter mMyAdapter = new MyAdapter(getActivity(), mistakeCarMsg.getList());
+        msgMistakeList.setAdapter(mMyAdapter);
     }
 
     @Override
