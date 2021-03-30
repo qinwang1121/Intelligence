@@ -15,7 +15,7 @@ public class User {
 
     private String gender;
 
-    private String ID;
+    private String id;
 
     private String phone;
 
@@ -28,7 +28,7 @@ public class User {
         this.userName = userName;
         this.passWord = passWord;
         this.gender = gender;
-        this.ID = ID;
+        this.id = ID;
         this.phone = phone;
         this.home = home;
         this.photo = photo;
@@ -58,12 +58,12 @@ public class User {
         this.gender = gender;
     }
 
-    public String getID() {
-        return ID;
+    public String getId() {
+        return id;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getPhone() {

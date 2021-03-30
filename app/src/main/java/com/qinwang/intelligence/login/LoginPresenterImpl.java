@@ -54,10 +54,9 @@ public class LoginPresenterImpl implements LoginContract.LoginPresenter{
                 editor.putString("userName", data.getUserName());
                 editor.putString("passWord", data.getPassWord());
                 editor.putString("gender", data.getGender());
-                editor.putString("ID", data.getID());
+                editor.putString("ID", data.getId());
                 editor.putString("phone", data.getPhone());
                 editor.putString("home", data.getHome());
-                editor.putString("photo", data.getPhoto());
                 editor.apply();
             }
 
