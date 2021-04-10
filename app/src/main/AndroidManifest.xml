@@ -10,6 +10,12 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <!-- 写外置存储。如果开发者使用了离线地图，并且数据写在外置存储区域，则需要申请该权限 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 获取允许应用程序更改Wi-Fi连接状态的权限，用于室内步行导航wifi定位,如果不需要室内步行导航功能则该权限无需申请 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 这个权限用于进行网络定位 -->
+    <uses-permission android:name="android.Manifest.permission.CHANGE_WIFI_STATE" />
+    <!-- 这个权限用于访问GPS定位 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:name=".MyApplication"
@@ -39,6 +45,11 @@
         </activity>
         <activity android:name=".main.MainActivity"
             android:screenOrientation="portrait" />
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" />
 
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"

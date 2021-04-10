@@ -1,8 +1,11 @@
 package com.qinwang.intelligence.login;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,6 +14,9 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.qinwang.base.BaseActivity;
 import com.qinwang.intelligence.AppSelect;
@@ -51,6 +57,15 @@ public class LoginActivity extends BaseActivity implements LoginContract.LoginVi
             register_text.setVisibility(View.GONE);
         }else if (AppSelect.getAppUser().equals("user")){
             register_text.setVisibility(View.VISIBLE);
+        }
+
+        if(Build.VERSION.SDK_INT >= 23){
+            int checkPermission = ContextCompat.checkSelfPermission(LoginActivity.this,
+                    Manifest.permission.ACCESS_COARSE_LOCATION);
+            if (checkPermission != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(LoginActivity.this,new
+                        String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1);return;
+            }
         }
 
         mLoginPresenter = new LoginPresenterImpl(LoginActivity.this,
