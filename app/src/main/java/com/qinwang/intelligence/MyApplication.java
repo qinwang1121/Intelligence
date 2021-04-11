@@ -14,6 +14,8 @@ import com.baidu.mapapi.SDKInitializer;
  */
 public class MyApplication extends Application {
     public static boolean isFirstLogin = true;
+    public static boolean isFirstLoc = true;  //定义第一次启动定位
+
 
     public static String SERVE_KEY = "Cxz3Gc2UCPRVGk9X8PR7rH9SZGfb4rNF";
 

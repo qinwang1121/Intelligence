@@ -23,7 +23,9 @@ import com.baidu.mapapi.model.LatLng;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.qinwang.base.BaseActivity;
 import com.qinwang.intelligence.BuildConfig;
+import com.qinwang.intelligence.MyApplication;
 import com.qinwang.intelligence.R;
+import com.qinwang.intelligence.main.fragment.home.HomeFragment;
 
 public class MainActivity extends BaseActivity {
 
@@ -135,7 +137,6 @@ public class MainActivity extends BaseActivity {
      * 定位回调
      */
     class MyLocationListener extends BDAbstractLocationListener{
-        private boolean isFirstLoc = true;  //定义第一次启动
         private static final String TAG = "LocationListener_message";
 
         @SuppressLint("LongLogTag")
@@ -167,10 +168,12 @@ public class MainActivity extends BaseActivity {
 
 //            Log.d(TAG,"当前位置信息：" + addr);
             //如果是第一次定位,就定位到以自己为中心
-            if (isFirstLoc){
+            if (MyApplication.isFirstLoc){
                 LatLng ll = new LatLng(latitude, longitude);                            //获取用户当前经纬度
                 MapStatusUpdate u = MapStatusUpdateFactory.newLatLng(ll);               //更新坐标位置
-                isFirstLoc = false;                                                     //取消第一次定位
+                HomeFragment.mBaiduMap.setMyLocationData(myLocationData);
+                HomeFragment.mBaiduMap.animateMapStatus(u);                             //设置地图位置
+                MyApplication.isFirstLoc = false;                                                     //取消第一次定位
             }
         }
 
