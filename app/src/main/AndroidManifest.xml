@@ -53,7 +53,7 @@
 
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="Y4c93TlAV7FLh4ITPVDGqmaAW1b8jGTN" />
+            android:value="${app_location_ak}" />
     </application>
 
 </manifest>

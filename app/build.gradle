@@ -34,7 +34,8 @@ android {
             applicationId "com.qinwang.intelligence.admin"
             manifestPlaceholders = [
                     app_name:"@string/app_name1",
-                    app_icon:"@mipmap/ic_launcher"
+                    app_icon:"@mipmap/ic_launcher",
+                    app_location_ak:"@string/admin_AK"
             ]
         }
         user{
@@ -42,7 +43,8 @@ android {
             applicationId "com.qinwang.intelligence.user"
             manifestPlaceholders = [
                     app_name:"@string/app_name2",
-                    app_icon:"@mipmap/ic_launcher"
+                    app_icon:"@mipmap/ic_launcher",
+                    app_location_ak:"@string/user_AK"
             ]
         }
     }
@@ -52,7 +54,6 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
-    implementation project(path: ':base')
     implementation project(path: ':base')
     implementation 'androidx.navigation:navigation-fragment:2.1.0'
     implementation 'androidx.navigation:navigation-ui:2.1.0'

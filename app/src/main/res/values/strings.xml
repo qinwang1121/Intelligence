@@ -2,6 +2,9 @@
     <string name="app_name1">IntelligenceAdmin</string>
     <string name="app_name2">IntelligenceUser</string>
 
+    <string name="admin_AK">Y4c93TlAV7FLh4ITPVDGqmaAW1b8jGTN</string>
+    <string name="user_AK">ztFTWdtYZjHkS8imXYGiTwGE2RdBGWD4</string>
+
     <!-- MainActivity -->
     <string name="menu_admin_home">HOME</string>
     <string name="menu_admin_mistake">违规</string>
