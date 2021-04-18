@@ -121,4 +121,7 @@
     <string name="carMistake">违章记录:</string>
     <string name="msgBack">返回</string>
     <string name="msgList">违规描述</string>
+
+    <!-- HomeFragment -->
+    <string name="trafficInfo">道路信息</string>
 </resources>

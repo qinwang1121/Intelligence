@@ -55,6 +55,7 @@ public class HomeFragment extends BaseFragment {
 
     public void setMap(){
         mBaiduMap = mMapView.getMap();
+        mBaiduMap.setTrafficEnabled(true);                              //显示路况
         mBaiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);
         MapStatus mMapStatus = new MapStatus
                 .Builder()
