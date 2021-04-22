@@ -1,0 +1,316 @@
+Index: app/src/main/java/com/qinwang/intelligence/tools/bean/TrafficInfo.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.qinwang.intelligence.tools.bean;\r\n\r\nimport java.util.List;\r\n\r\n/**\r\n * @Auther:haoyanwang1121@gmail.com\r\n * @Date:2021/3/30\r\n * @Description:com.qinwang.intelligence.tools.bean\r\n * @Version:1.0\r\n * @function:\r\n */\r\npublic class TrafficInfo {\r\n\r\n    private int status;                 //状态码\r\n    private String message;             //响应信息\r\n    private String description;         //路况语义化描述\r\n    private evaluation mEvaluation;     //路况整体评估\r\n    private List<road_traffic> mList;   //路况详细信息\r\n\r\n    public int getStatus() {\r\n        return status;\r\n    }\r\n\r\n    public void setStatus(int status) {\r\n        this.status = status;\r\n    }\r\n\r\n    public String getMessage() {\r\n        return message;\r\n    }\r\n\r\n    public void setMessage(String message) {\r\n        this.message = message;\r\n    }\r\n\r\n    public String getDescription() {\r\n        return description;\r\n    }\r\n\r\n    public void setDescription(String description) {\r\n        this.description = description;\r\n    }\r\n\r\n    public evaluation getmEvaluation() {\r\n        return mEvaluation;\r\n    }\r\n\r\n    public void setmEvaluation(evaluation mEvaluation) {\r\n        this.mEvaluation = mEvaluation;\r\n    }\r\n\r\n    public List<road_traffic> getmList() {\r\n        return mList;\r\n    }\r\n\r\n    public void setmList(List<road_traffic> mList) {\r\n        this.mList = mList;\r\n    }\r\n\r\n    class evaluation{\r\n        private int status;         //路况整体评价\r\n        private String status_desc; //路况整体评价的语义化描述\r\n\r\n        public int getStatus() {\r\n            return status;\r\n        }\r\n\r\n        public void setStatus(int status) {\r\n            this.status = status;\r\n        }\r\n\r\n        public String getStatus_desc() {\r\n            return status_desc;\r\n        }\r\n\r\n        public void setStatus_desc(String status_desc) {\r\n            this.status_desc = status_desc;\r\n        }\r\n    }\r\n\r\n    class road_traffic{\r\n        private String road_name;               //道路名称\r\n        private congestion_sections congestionSections;//拥堵路段详情\r\n\r\n        public String getRoad_name() {\r\n            return road_name;\r\n        }\r\n\r\n        public void setRoad_name(String road_name) {\r\n            this.road_name = road_name;\r\n        }\r\n\r\n        public congestion_sections getCongestionSections() {\r\n            return congestionSections;\r\n        }\r\n\r\n        public void setCongestionSections(congestion_sections congestionSections) {\r\n            this.congestionSections = congestionSections;\r\n        }\r\n    }\r\n\r\n    class congestion_sections{\r\n        private String section_desc;    //路段拥堵语义化描述\r\n        private int status;             //路段拥堵评价\r\n        private double speed;           //平均通行速度\r\n        private int congestion_distance;//拥堵距离\r\n        private String congestion_trend;//较10分钟前拥堵趋势\r\n\r\n        public String getSection_desc() {\r\n            return section_desc;\r\n        }\r\n\r\n        public void setSection_desc(String section_desc) {\r\n            this.section_desc = section_desc;\r\n        }\r\n\r\n        public int getStatus() {\r\n            return status;\r\n        }\r\n\r\n        public void setStatus(int status) {\r\n            this.status = status;\r\n        }\r\n\r\n        public double getSpeed() {\r\n            return speed;\r\n        }\r\n\r\n        public void setSpeed(double speed) {\r\n            this.speed = speed;\r\n        }\r\n\r\n        public int getCongestion_distance() {\r\n            return congestion_distance;\r\n        }\r\n\r\n        public void setCongestion_distance(int congestion_distance) {\r\n            this.congestion_distance = congestion_distance;\r\n        }\r\n\r\n        public String getCongestion_trend() {\r\n            return congestion_trend;\r\n        }\r\n\r\n        public void setCongestion_trend(String congestion_trend) {\r\n            this.congestion_trend = congestion_trend;\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/qinwang/intelligence/tools/bean/TrafficInfo.java	(revision 4ee6af421c6f2659f242cec8e0eb369c901b720c)
++++ app/src/main/java/com/qinwang/intelligence/tools/bean/TrafficInfo.java	(date 1619085310865)
+@@ -80,7 +80,7 @@
+ 
+     class road_traffic{
+         private String road_name;               //道路名称
+-        private congestion_sections congestionSections;//拥堵路段详情
++        private List<congestion_sections> mList;//拥堵路段详情
+ 
+         public String getRoad_name() {
+             return road_name;
+@@ -90,12 +90,12 @@
+             this.road_name = road_name;
+         }
+ 
+-        public congestion_sections getCongestionSections() {
+-            return congestionSections;
++        public List<congestion_sections> getmList() {
++            return mList;
+         }
+ 
+-        public void setCongestionSections(congestion_sections congestionSections) {
+-            this.congestionSections = congestionSections;
++        public void setmList(List<congestion_sections> mList) {
++            this.mList = mList;
+         }
+     }
+ 
+Index: app/src/main/java/com/qinwang/intelligence/tools/ListViewHolder.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/qinwang/intelligence/tools/ListViewHolder.java	(date 1619084994636)
++++ app/src/main/java/com/qinwang/intelligence/tools/ListViewHolder.java	(date 1619084994636)
+@@ -0,0 +1,42 @@
++package com.qinwang.intelligence.tools;
++
++import android.view.View;
++import android.widget.TextView;
++
++import androidx.annotation.NonNull;
++
++import com.qinwang.intelligence.R;
++import com.qinwang.intelligence.tools.bean.RoadMsg;
++import com.zhpan.bannerview.BaseViewHolder;
++
++/**
++ * @Auther:haoyanwang1121@gmail.com
++ * @Date:2021/4/22
++ * @Description:com.qinwang.intelligence.tools
++ * @Version:1.0
++ * @function:
++ */
++public class ListViewHolder extends BaseViewHolder<RoadMsg> {
++
++    public ListViewHolder(@NonNull View itemView) {
++        super(itemView);
++    }
++
++    @Override
++    public void bindData(RoadMsg data, int position, int pageSize) {
++        TextView roadName, roadEva, roadSpeed, roadDis, roadTrend, roadDes;
++        roadName = (TextView) findView(R.id.banner_roadName);
++        roadEva = (TextView) findView(R.id.banner_roadEva);
++        roadSpeed = (TextView) findView(R.id.banner_roadSpeed);
++        roadDis = (TextView) findView(R.id.banner_roadDis);
++        roadTrend = (TextView) findView(R.id.banner_roadTrend);
++        roadDes = (TextView) findView(R.id.banner_roadDes);
++
++        roadName.setText(data.getRoad_name());
++        roadEva.setText(data.getStatus());
++        roadSpeed.setText(String.valueOf(data.getSpeed()));
++        roadDis.setText(String.valueOf(data.getCongestion_distance()));
++        roadTrend.setText(data.getCongestion_trend());
++        roadDes.setText(data.getSection_desc());
++    }
++}
+Index: app/src/main/res/values/strings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><resources>\r\n    <string name=\"app_name1\">IntelligenceAdmin</string>\r\n    <string name=\"app_name2\">IntelligenceUser</string>\r\n\r\n    <string name=\"admin_AK\">Y4c93TlAV7FLh4ITPVDGqmaAW1b8jGTN</string>\r\n    <string name=\"user_AK\">ztFTWdtYZjHkS8imXYGiTwGE2RdBGWD4</string>\r\n\r\n    <!-- MainActivity -->\r\n    <string name=\"menu_admin_home\">HOME</string>\r\n    <string name=\"menu_admin_mistake\">违规</string>\r\n    <string name=\"menu_myself\">我的</string>\r\n    <string name=\"menu_user_consume\">耗时</string>\r\n    <string name=\"back\">再按一次退出程序!</string>\r\n\r\n    <!-- LoadingDialog -->\r\n    <string name=\"Loading_loading\">加载中…</string>\r\n    <string name=\"Loading_login\">登录中…</string>\r\n    <string name=\"Loading_upload\">上传中…</string>\r\n    <string name=\"Loading_search\">查询中…</string>\r\n\r\n    <!-- LoginActivity -->\r\n    <string name=\"login_userName\">用户名</string>\r\n    <string name=\"login_password\">密码</string>\r\n    <string name=\"login\">登录</string>\r\n    <string name=\"register\">用户注册</string>\r\n    <string name=\"usernameError\">用户名为空</string>\r\n    <string name=\"passwordError\">密码为空</string>\r\n    <string name=\"netWorkError\">请求失败</string>\r\n\r\n    <!-- MyselfFragment -->\r\n    <string name=\"myself_account\">账号管理</string>\r\n    <string name=\"myself_feedback\">意见反馈</string>\r\n    <string name=\"myself_examine\">版本检查</string>\r\n    <string name=\"myself_exit\">退出登录</string>\r\n\r\n    <!-- CircleDialog -->\r\n    <string name=\"Dialog_title\">提示</string>\r\n    <string name=\"Dialog_Examine_text\">已是最新版本1.0</string>\r\n    <string name=\"Dialog_text\">是否确定退出</string>\r\n    <string name=\"Dialog_feedback_number_error\">字数已超过200</string>\r\n    <string name=\"Dialog_true\">确定</string>\r\n    <string name=\"Dialog_false\">取消</string>\r\n\r\n    <!-- FeedbackActivity -->\r\n    <string name=\"feedback_question\">问题描述</string>\r\n    <string name=\"feedback_describe\">描述不要超过200字</string>\r\n    <string name=\"feedback_number\">字数：</string>\r\n    <string name=\"feedback_way\">联系方式</string>\r\n    <string name=\"feedback_mail\">填写邮箱</string>\r\n    <string name=\"feedback_feedback\">提交反馈</string>\r\n\r\n    <string name=\"feedback_describe_error\">请填写反馈意见</string>\r\n    <string name=\"feedback_mail_null\">请填写邮箱</string>\r\n    <string name=\"feedback_mail_error\">请正确填写邮箱</string>\r\n    <string name=\"feedback_success\">提交成功</string>\r\n    <string name=\"feedback_fail\">提交失败</string>\r\n\r\n    <!-- SafetyActivity -->\r\n    <string name=\"safetyTitle\">我的信息</string>\r\n    <string name=\"userName\">姓名:</string>\r\n    <string name=\"userGander\">性别:</string>\r\n    <string name=\"userId\">身份证号:</string>\r\n    <string name=\"userPassword\">密码:</string>\r\n    <string name=\"userTel\">电话:</string>\r\n    <string name=\"userHome\">住址:</string>\r\n    <string name=\"makeSure\">确定</string>\r\n\r\n    <!-- MistakeFragment -->\r\n    <string name=\"menu_search\">查询</string>\r\n    <string name=\"menu_uploading\">上传</string>\r\n\r\n    <!-- UploadFragment -->\r\n    <string name=\"car_number\">车辆牌号:</string>\r\n    <string name=\"car_color\">车身颜色:</string>\r\n    <string name=\"car_type\">车辆类型:</string>\r\n    <string name=\"other_type\">其他类型:</string>\r\n    <string name=\"input_other_type\">请输入车辆类型</string>\r\n    <string name=\"carBoard_color\">车牌颜色:</string>\r\n    <string name=\"mistake_time\">违法时间:</string>\r\n    <string name=\"mistake_place\">违法地点:</string>\r\n    <string name=\"mistake_describe\">违法描述:</string>\r\n    <string name=\"police\">执法交警:</string>\r\n    <string name=\"mistake_uploading\">提交</string>\r\n\r\n    <string name=\"car_big\">大型客车</string>\r\n    <string name=\"car_small\">小型客车</string>\r\n    <string name=\"truck_big\">大型货车</string>\r\n    <string name=\"truck_small\">小型货车</string>\r\n    <string name=\"motorcycle\">摩托车</string>\r\n\r\n    <string name=\"other\">其他</string>\r\n\r\n    <string name=\"color_blue\">蓝色</string>\r\n    <string name=\"color_yellow\">黄色</string>\r\n    <string name=\"color_white\">白色</string>\r\n    <string name=\"color_black\">黑色</string>\r\n    <string name=\"color_green\">绿色</string>\r\n\r\n    <string name=\"errorCarNumber\">请填写车辆牌号</string>\r\n    <string name=\"errorCarColor\">请填写车辆颜色</string>\r\n    <string name=\"errorType\">请选择车辆类型</string>\r\n    <string name=\"errorBoardColor\">请选择车牌颜色</string>\r\n    <string name=\"errorDescribe\">请描述</string>\r\n\r\n    <string name=\"uploading_success\">上传成功!!!</string>\r\n    <string name=\"uploading_fail\">无法上传!!!</string>\r\n\r\n    <!-- SearchFragment -->\r\n    <string name=\"searchMsg\">输入车主身份证号或车牌号码</string>\r\n    <string name=\"searchMsgError\">请输入车主身份证号或车牌号码</string>\r\n    <string name=\"searchFail\">查询失败</string>\r\n\r\n    <!-- Message -->\r\n    <string name=\"carUserName\">车主姓名:</string>\r\n    <string name=\"carUserSex\">性别:</string>\r\n    <string name=\"carUserID\">身份证号:</string>\r\n    <string name=\"carNumber\">车辆牌号:</string>\r\n    <string name=\"carType\">车辆类型:</string>\r\n    <string name=\"carName\">车辆品牌:</string>\r\n    <string name=\"carColor\">车身颜色:</string>\r\n    <string name=\"carMistake\">违章记录:</string>\r\n    <string name=\"msgBack\">返回</string>\r\n    <string name=\"msgList\">违规描述</string>\r\n\r\n    <!-- HomeFragment -->\r\n    <string name=\"trafficInfo\">道路信息</string>\r\n</resources>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/values/strings.xml	(revision 4ee6af421c6f2659f242cec8e0eb369c901b720c)
++++ app/src/main/res/values/strings.xml	(date 1619081962114)
+@@ -124,4 +124,12 @@
+ 
+     <!-- HomeFragment -->
+     <string name="trafficInfo">道路信息</string>
++    
++    <string name="banner_roadName">道路名称:</string>
++    <string name="banner_roadMsg">道路拥堵详情:</string>
++    <string name="banner_roadEvaluate">路段拥堵评价:</string>
++    <string name="banner_roadDistance">拥堵距离:</string>
++    <string name="banner_roadSpeed">平均通行速度:</string>
++    <string name="banner_roadTrend">较10分钟前的趋势:</string>
++    <string name="banner_roadDesc">路段拥堵描述:</string>
+ </resources>
+\ No newline at end of file
+Index: app/src/main/res/layout/include_banner_list_view.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/include_banner_list_view.xml	(date 1619082831552)
++++ app/src/main/res/layout/include_banner_list_view.xml	(date 1619082831552)
+@@ -0,0 +1,126 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout
++    xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent">
++
++    <TextView
++        android:id="@+id/textView16"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:text="@string/banner_roadName"
++        android:textSize="24sp"
++        android:textStyle="bold"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent" />
++
++    <TextView
++        android:id="@+id/banner_roadName"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:textSize="24sp"
++        app:layout_constraintStart_toEndOf="@+id/textView16"
++        app:layout_constraintTop_toTopOf="parent" />
++
++    <TextView
++        android:id="@+id/textView21"
++        android:layout_width="0dp"
++        android:layout_height="wrap_content"
++        android:text="@string/banner_roadMsg"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/textView16" />
++
++    <TextView
++        android:id="@+id/textView23"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:text="@string/banner_roadEvaluate"
++        android:textSize="24sp"
++        android:textStyle="bold"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/textView21" />
++
++    <TextView
++        android:id="@+id/textView25"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:text="@string/banner_roadSpeed"
++        android:textSize="24sp"
++        android:textStyle="bold"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/textView23" />
++
++    <TextView
++        android:id="@+id/textView27"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:text="@string/banner_roadDistance"
++        android:textSize="24sp"
++        android:textStyle="bold"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/textView25" />
++
++    <TextView
++        android:id="@+id/textView28"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:text="@string/banner_roadTrend"
++        android:textSize="24sp"
++        android:textStyle="bold"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/textView27" />
++
++    <TextView
++        android:id="@+id/textView29"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:text="@string/banner_roadDesc"
++        android:textSize="24sp"
++        android:textStyle="bold"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/textView28" />
++
++    <TextView
++        android:id="@+id/banner_roadEva"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:textSize="24sp"
++        app:layout_constraintStart_toEndOf="@+id/textView23"
++        app:layout_constraintTop_toBottomOf="@+id/textView21" />
++
++    <TextView
++        android:id="@+id/banner_roadSpeed"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:textSize="24sp"
++        app:layout_constraintStart_toEndOf="@+id/textView25"
++        app:layout_constraintTop_toBottomOf="@+id/banner_roadEva" />
++
++    <TextView
++        android:id="@+id/banner_roadDis"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:textSize="24sp"
++        app:layout_constraintStart_toEndOf="@+id/textView27"
++        app:layout_constraintTop_toBottomOf="@+id/banner_roadSpeed" />
++
++    <TextView
++        android:id="@+id/banner_roadTrend"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:textSize="24sp"
++        app:layout_constraintStart_toEndOf="@+id/textView28"
++        app:layout_constraintTop_toBottomOf="@+id/banner_roadDis" />
++
++    <TextView
++        android:id="@+id/banner_roadDes"
++        android:layout_width="0dp"
++        android:layout_height="0dp"
++        android:textSize="18sp"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/textView29" />
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/java/com/qinwang/intelligence/tools/bean/RoadMsg.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/qinwang/intelligence/tools/bean/RoadMsg.java	(date 1619084994610)
++++ app/src/main/java/com/qinwang/intelligence/tools/bean/RoadMsg.java	(date 1619084994610)
+@@ -0,0 +1,65 @@
++package com.qinwang.intelligence.tools.bean;
++
++/**
++ * @Auther:haoyanwang1121@gmail.com
++ * @Date:2021/4/22
++ * @Description:com.qinwang.intelligence.tools.bean
++ * @Version:1.0
++ * @function:
++ */
++public class RoadMsg {
++    private String road_name;       //道路名称
++    private String section_desc;    //路段拥堵语义化描述
++    private int status;             //路段拥堵评价
++    private double speed;           //平均通行速度
++    private int congestion_distance;//拥堵距离
++    private String congestion_trend;//较10分钟前拥堵趋势
++
++    public String getRoad_name() {
++        return road_name;
++    }
++
++    public void setRoad_name(String road_name) {
++        this.road_name = road_name;
++    }
++
++    public String getSection_desc() {
++        return section_desc;
++    }
++
++    public void setSection_desc(String section_desc) {
++        this.section_desc = section_desc;
++    }
++
++    public int getStatus() {
++        return status;
++    }
++
++    public void setStatus(int status) {
++        this.status = status;
++    }
++
++    public double getSpeed() {
++        return speed;
++    }
++
++    public void setSpeed(double speed) {
++        this.speed = speed;
++    }
++
++    public int getCongestion_distance() {
++        return congestion_distance;
++    }
++
++    public void setCongestion_distance(int congestion_distance) {
++        this.congestion_distance = congestion_distance;
++    }
++
++    public String getCongestion_trend() {
++        return congestion_trend;
++    }
++
++    public void setCongestion_trend(String congestion_trend) {
++        this.congestion_trend = congestion_trend;
++    }
++}
