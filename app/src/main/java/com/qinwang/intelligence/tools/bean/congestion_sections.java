@@ -7,7 +7,7 @@ package com.qinwang.intelligence.tools.bean;
  * @Version:1.0
  * @function:
  */
-public class Congestion_sections {
+public class congestion_sections {
     private String section_desc;    //路段拥堵语义化描述
     private int status;             //路段拥堵评价
     private double speed;           //平均通行速度

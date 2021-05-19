@@ -20,6 +20,7 @@ import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MyLocationConfiguration;
 import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.model.LatLng;
+import com.baidu.mapapi.utils.DistanceUtil;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.qinwang.base.BaseActivity;
 import com.qinwang.intelligence.BuildConfig;
@@ -40,7 +41,11 @@ public class MainActivity extends BaseActivity {
     //坐标类型
     private static final String COORD_TYPE = "bd09ll";
     //定位间隔
-    private static final int SCAN_SPAN = 1000;
+    private static final int SCAN_SPAN = 1000;  //1000ms
+
+    public static double ADMIN_LATITUDE = 0;
+    public static double ADMIN_LONGITUDE = 0;
+    private static final double INTERVAL = 500; //500m
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -156,6 +161,12 @@ public class MainActivity extends BaseActivity {
             float radius = bdLocation.getRadius();              //获取定位精度，默认值为0.0f
             int errorCode = bdLocation.getLocType();            //错误码
 
+            if (DistanceUtil.getDistance(new LatLng(latitude, longitude), new LatLng(ADMIN_LATITUDE, ADMIN_LONGITUDE)) > INTERVAL){
+                ADMIN_LATITUDE = latitude;
+                ADMIN_LONGITUDE = longitude;
+//                HomeFragment.getMsg(MainActivity.this, new LatLng(ADMIN_LATITUDE, ADMIN_LONGITUDE));
+            }
+
             if (bdLocation == null){
                 return;
             }
@@ -171,9 +182,13 @@ public class MainActivity extends BaseActivity {
             if (MyApplication.isFirstLoc){
                 LatLng ll = new LatLng(latitude, longitude);                            //获取用户当前经纬度
                 MapStatusUpdate u = MapStatusUpdateFactory.newLatLng(ll);               //更新坐标位置
-                HomeFragment.mBaiduMap.setMyLocationData(myLocationData);
-                HomeFragment.mBaiduMap.animateMapStatus(u);                             //设置地图位置
-                MyApplication.isFirstLoc = false;                                                     //取消第一次定位
+                MyApplication.isFirstLoc = false;//取消第一次定位
+                if(BuildConfig.PURPOSE.equals("admin")){
+                    HomeFragment.mBaiduMap.setMyLocationData(myLocationData);
+                    HomeFragment.mBaiduMap.animateMapStatus(u);                             //设置地图位置
+                }else {
+
+                }
             }
         }
 

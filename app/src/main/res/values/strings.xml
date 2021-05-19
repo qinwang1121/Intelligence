@@ -127,9 +127,9 @@
     
     <string name="banner_roadName">道路名称:</string>
     <string name="banner_roadMsg">道路拥堵详情:</string>
-    <string name="banner_roadEvaluate">路段拥堵评价:</string>
-    <string name="banner_roadDistance">拥堵距离:</string>
-    <string name="banner_roadSpeed">平均通行速度:</string>
+    <string name="banner_roadEvaluate">预计通过所需时间(m/min):</string>
+    <string name="banner_roadDistance">拥堵距离(m):</string>
+    <string name="banner_roadSpeed">平均通行速度(km/h):</string>
     <string name="banner_roadTrend">较10分钟前的趋势:</string>
     <string name="banner_roadDesc">路段拥堵描述:</string>
 </resources>

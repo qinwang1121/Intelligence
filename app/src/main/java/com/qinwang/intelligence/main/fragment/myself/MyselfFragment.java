@@ -1,10 +1,13 @@
 package com.qinwang.intelligence.main.fragment.myself;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -37,6 +40,18 @@ public class MyselfFragment extends BaseFragment implements View.OnClickListener
                 .setOnClickListener(this);
         getView().findViewById(R.id.myself_out)
                 .setOnClickListener(this);
+
+        initView();
+    }
+
+    public void initView(){
+
+        TextView userName = getView().findViewById(R.id.myself_realName_text);
+        TextView userID = getView().findViewById(R.id.myself_userId_text);
+
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("user", Context.MODE_PRIVATE);
+        userName.setText(sharedPreferences.getString("userName", null));
+        userID.setText(sharedPreferences.getString("ID", null));
     }
 
     @Override

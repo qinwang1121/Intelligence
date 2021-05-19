@@ -7,7 +7,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.qinwang.intelligence.R;
-import com.qinwang.intelligence.tools.bean.Road_traffic;
+import com.qinwang.intelligence.tools.bean.road_traffic;
 import com.zhpan.bannerview.BaseViewHolder;
 
 /**
@@ -17,26 +17,22 @@ import com.zhpan.bannerview.BaseViewHolder;
  * @Version:1.0
  * @function:
  */
-public class BannerListViewHolder extends BaseViewHolder<Road_traffic> {
+public class BannerListViewHolder extends BaseViewHolder<road_traffic> {
 
     public BannerListViewHolder(@NonNull View itemView) {
         super(itemView);
     }
 
     @Override
-    public void bindData(Road_traffic data, int position, int pageSize) {
+    public void bindData(road_traffic data, int position, int pageSize) {
 
         BannerListAdapter mBannerListAdapter =
-                new BannerListAdapter(itemView.getContext(), data.getmList());
+                new BannerListAdapter(itemView.getContext(), data.getCongestion_sections());
 
         TextView roadName = (TextView) findView(R.id.banner_roadName);
         ListView roadList = (ListView) findView(R.id.banner_list);
 
         roadName.setText(data.getRoad_name());
         roadList.setAdapter(mBannerListAdapter);
-    }
-
-    static class ViewHolder{
-        public TextView roadEva, roadSpeed, roadDis, roadTrend, roadDes;
     }
 }

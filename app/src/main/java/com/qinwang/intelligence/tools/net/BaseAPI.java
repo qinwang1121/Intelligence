@@ -31,7 +31,7 @@ public class BaseAPI {
      * @param city 所在城市
      * @return
      */
-    public String USER_WEB_ROAD_SERVE(String road_name, String city){
+    public final static String USER_WEB_ROAD_SERVE(String road_name, String city){
         return "http://api.map.baidu.com/traffic/v1/road?road_name= " + road_name +
                 "&city=" + city +
                 "&ak=" + MyApplication.SERVE_KEY;
@@ -43,7 +43,7 @@ public class BaseAPI {
      * @param radius 查询半径 单位：米，取值范围[1,1000]
      * @return
      */
-    public String ADMIN_WEB_RIM_SERVE(String center, String radius){
+    public final static String ADMIN_WEB_RIM_SERVE(String center, int radius){
         return "http://api.map.baidu.com/traffic/v1/around?ak=" + MyApplication.SERVE_KEY +
                 "&center=" + center +
                 "&radius=" + radius +
@@ -57,10 +57,10 @@ public class BaseAPI {
      * @param road_grade 道路等级  默认值：road_grade=0 道路等级对应表如下： 0：全部驾车道路 1：高速路 2：环路及快速路 3：主干路 4：次干路 5：支干路
      * @return
      */
-    public String ADMIN_WEB_RIM_SERVE(String center, String radius, int road_grade){
+    public final static String ADMIN_WEB_RIM_SERVE(String center, String radius, int road_grade){
         return "http://api.map.baidu.com/traffic/v1/around?ak=" + MyApplication.SERVE_KEY +
                 "&center=" + center +
-                "&road_grade" + road_grade +
+                "&road_grade=" + road_grade +
                 "&radius=" + radius +
                 "&coord_type_input=gcj02&coord_type_output=gcj02";
     }

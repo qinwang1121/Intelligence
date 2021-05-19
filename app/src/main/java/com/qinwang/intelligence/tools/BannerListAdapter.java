@@ -9,7 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.qinwang.intelligence.R;
-import com.qinwang.intelligence.tools.bean.Congestion_sections;
+import com.qinwang.intelligence.main.fragment.home.HomeFragment;
+import com.qinwang.intelligence.tools.bean.congestion_sections;
 
 import java.util.List;
 
@@ -24,10 +25,10 @@ public class BannerListAdapter extends BaseAdapter {
 
     private Context mContext;
     private LayoutInflater mInflater;
-    private List<Congestion_sections> mCongestionSectionsList;
+    private List<congestion_sections> mCongestionSectionsList;
 
     public BannerListAdapter(Context mContext,
-                             List<Congestion_sections> mCongestionSectionsList){
+                             List<congestion_sections> mCongestionSectionsList){
         this.mContext = mContext;
         this.mCongestionSectionsList = mCongestionSectionsList;
         mInflater = LayoutInflater.from(mContext);
@@ -51,10 +52,10 @@ public class BannerListAdapter extends BaseAdapter {
     @SuppressLint("InflateParams")
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        Congestion_sections mCongestionSections = mCongestionSectionsList.get(i);
-        BannerListViewHolder.ViewHolder mViewHolder = null;
+        congestion_sections mCongestionSections = mCongestionSectionsList.get(i);
+        HomeFragment.ViewHolder2 mViewHolder = null;
         if (view == null){
-            mViewHolder = new BannerListViewHolder.ViewHolder();
+            mViewHolder = new HomeFragment.ViewHolder2();
             view = mInflater.inflate(R.layout.list_banner_view, null);
             mViewHolder.roadEva = (TextView) view.findViewById(R.id.banner_roadEva);
             mViewHolder.roadSpeed = (TextView) view.findViewById(R.id.banner_roadSpeed);
@@ -63,9 +64,9 @@ public class BannerListAdapter extends BaseAdapter {
             mViewHolder.roadDes = (TextView) view.findViewById(R.id.banner_roadDes);
             view.setTag(mViewHolder);
         }else {
-            mViewHolder = (BannerListViewHolder.ViewHolder) view.getTag();
+            mViewHolder = (HomeFragment.ViewHolder2) view.getTag();
         }
-        mViewHolder.roadEva.setText(mCongestionSections.getStatus());
+        mViewHolder.roadEva.setText(String.format("%.2f", mCongestionSections.getCongestion_distance() / (mCongestionSections.getSpeed()  * 1000 / 60)));
         mViewHolder.roadSpeed.setText(String.valueOf(mCongestionSections.getSpeed()));
         mViewHolder.roadDis.setText(String.valueOf(mCongestionSections.getCongestion_distance()));
         mViewHolder.roadTrend.setText(mCongestionSections.getCongestion_trend());

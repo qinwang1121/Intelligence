@@ -4,7 +4,7 @@ import android.view.View;
 
 import com.qinwang.intelligence.R;
 import com.qinwang.intelligence.tools.BannerListViewHolder;
-import com.qinwang.intelligence.tools.bean.Road_traffic;
+import com.qinwang.intelligence.tools.bean.road_traffic;
 import com.zhpan.bannerview.BaseBannerAdapter;
 
 /**
@@ -14,9 +14,9 @@ import com.zhpan.bannerview.BaseBannerAdapter;
  * @Version:1.0
  * @function:
  */
-public class RoadMsgAdapter extends BaseBannerAdapter<Road_traffic, BannerListViewHolder> {
+public class RoadMsgAdapter extends BaseBannerAdapter<road_traffic, BannerListViewHolder> {
     @Override
-    protected void onBind(BannerListViewHolder holder, Road_traffic data, int position, int pageSize) {
+    protected void onBind(BannerListViewHolder holder, road_traffic data, int position, int pageSize) {
         holder.bindData(data, position, pageSize);
     }
 

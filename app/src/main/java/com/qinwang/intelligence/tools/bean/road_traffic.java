@@ -9,9 +9,9 @@ import java.util.List;
  * @Version:1.0
  * @function:
  */
-public class Road_traffic {
+public class road_traffic<M> {
     private String road_name;               //道路名称
-    private List<Congestion_sections> mList;//拥堵路段详情
+    private List<M> congestion_sections;//拥堵路段详情
 
     public String getRoad_name() {
         return road_name;
@@ -21,11 +21,11 @@ public class Road_traffic {
         this.road_name = road_name;
     }
 
-    public List<Congestion_sections> getmList() {
-        return mList;
+    public List<M> getCongestion_sections() {
+        return congestion_sections;
     }
 
-    public void setmList(List<Congestion_sections> mList) {
-        this.mList = mList;
+    public void setCongestion_sections(List<M> congestion_sections) {
+        this.congestion_sections = congestion_sections;
     }
 }
