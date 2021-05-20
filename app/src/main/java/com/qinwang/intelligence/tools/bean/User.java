@@ -21,17 +21,17 @@ public class User {
 
     private String home;
 
-    private String photo;
+    private String power;
 
     public User(String userName, String passWord, String gender,
-                String ID, String phone, String home, String photo){
+                String ID, String phone, String home, String power){
         this.userName = userName;
         this.passWord = passWord;
         this.gender = gender;
         this.id = ID;
         this.phone = phone;
         this.home = home;
-        this.photo = photo;
+        this.power = power;
     }
 
     public String getUserName() {
@@ -82,12 +82,12 @@ public class User {
         this.home = home;
     }
 
-    public String getPhoto() {
-        return photo;
+    public String getPower() {
+        return power;
     }
 
-    public void setPhoto(String photo) {
-        this.photo = photo;
+    public void setPower(String power) {
+        this.power = power;
     }
 
 }
