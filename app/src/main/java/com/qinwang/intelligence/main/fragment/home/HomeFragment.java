@@ -27,6 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import com.qinwang.base.BaseFragment;
 import com.qinwang.intelligence.MyApplication;
 import com.qinwang.intelligence.R;
+import com.qinwang.intelligence.main.MainActivity;
 import com.qinwang.intelligence.tools.BannerListAdapter;
 import com.qinwang.intelligence.tools.bean.congestion_sections;
 import com.qinwang.intelligence.tools.bean.evaluation;
@@ -116,10 +117,10 @@ public class HomeFragment extends BaseFragment {
         public void onMapClick(LatLng latLng) {
             MAP_CLICK ++;
             if (MAP_CLICK %2 == 0){
-//                getMsg(activity,
-//                        MainActivity.ADMIN_LATITUDE + "," + MainActivity.ADMIN_LONGITUDE);
+                getMsg(activity,
+                        MainActivity.ADMIN_LATITUDE + "," + MainActivity.ADMIN_LONGITUDE);
 //                getMsg(activity, "38.894193,121.54748");
-                getMsg(activity, "39.912078,116.464303");
+//                getMsg(activity, "39.912078,116.464303"); //北京
             }else {
                 Line.setGuidelinePercent(1);
                 linearLayout.setVisibility(View.GONE);

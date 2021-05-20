@@ -182,10 +182,10 @@ public class MainActivity extends BaseActivity {
                     if (DistanceUtil.getDistance(new LatLng(latitude, longitude), new LatLng(ADMIN_LATITUDE, ADMIN_LONGITUDE)) > INTERVAL){
                         ADMIN_LATITUDE = latitude;
                         ADMIN_LONGITUDE = longitude;
-//                HomeFragment.getMsg(MainActivity.this, new LatLng(ADMIN_LATITUDE, ADMIN_LONGITUDE));
                     }
                     HomeFragment.mBaiduMap.setMyLocationData(myLocationData);
                     HomeFragment.mBaiduMap.animateMapStatus(u);                             //设置地图位置
+                    HomeFragment.getMsg(MainActivity.this, MainActivity.ADMIN_LATITUDE + "," + MainActivity.ADMIN_LONGITUDE);
                 }else {
                     if (city != CITY_NAME || street != ROAD_NAME){
                         CITY_NAME = city;
