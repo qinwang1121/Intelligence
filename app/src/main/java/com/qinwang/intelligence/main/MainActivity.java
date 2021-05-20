@@ -163,18 +163,6 @@ public class MainActivity extends BaseActivity {
             String town = bdLocation.getTown();                 //获取乡镇信息
             float radius = bdLocation.getRadius();              //获取定位精度，默认值为0.0f
             int errorCode = bdLocation.getLocType();            //错误码
-
-            if (DistanceUtil.getDistance(new LatLng(latitude, longitude), new LatLng(ADMIN_LATITUDE, ADMIN_LONGITUDE)) > INTERVAL){
-                ADMIN_LATITUDE = latitude;
-                ADMIN_LONGITUDE = longitude;
-//                HomeFragment.getMsg(MainActivity.this, new LatLng(ADMIN_LATITUDE, ADMIN_LONGITUDE));
-            }
-            if (city != CITY_NAME || street != ROAD_NAME){
-                CITY_NAME = city;
-                ROAD_NAME = street;
-                ConsumeFragment.cityName.setText(CITY_NAME);
-                ConsumeFragment.roadName.setText(ROAD_NAME);
-            }
             if (bdLocation == null){
                 return;
             }
@@ -184,7 +172,6 @@ public class MainActivity extends BaseActivity {
                     .latitude(latitude)
                     .longitude(longitude)
                     .build();
-
 //            Log.d(TAG,"当前位置信息：" + addr);
             //如果是第一次定位,就定位到以自己为中心
             if (MyApplication.isFirstLoc){
@@ -192,9 +179,20 @@ public class MainActivity extends BaseActivity {
                 MapStatusUpdate u = MapStatusUpdateFactory.newLatLng(ll);               //更新坐标位置
                 MyApplication.isFirstLoc = false;//取消第一次定位
                 if(BuildConfig.PURPOSE.equals("admin")){
+                    if (DistanceUtil.getDistance(new LatLng(latitude, longitude), new LatLng(ADMIN_LATITUDE, ADMIN_LONGITUDE)) > INTERVAL){
+                        ADMIN_LATITUDE = latitude;
+                        ADMIN_LONGITUDE = longitude;
+//                HomeFragment.getMsg(MainActivity.this, new LatLng(ADMIN_LATITUDE, ADMIN_LONGITUDE));
+                    }
                     HomeFragment.mBaiduMap.setMyLocationData(myLocationData);
                     HomeFragment.mBaiduMap.animateMapStatus(u);                             //设置地图位置
                 }else {
+                    if (city != CITY_NAME || street != ROAD_NAME){
+                        CITY_NAME = city;
+                        ROAD_NAME = street;
+                        ConsumeFragment.cityName.setText(CITY_NAME);
+                        ConsumeFragment.roadName.setText(ROAD_NAME);
+                    }
                     ConsumeFragment.mBaiduMap.setMyLocationData(myLocationData);
                     ConsumeFragment.mBaiduMap.animateMapStatus(u);                             //设置地图位置
                     ConsumeFragment.getRoadMsg(MainActivity.this, city, street);
