@@ -28,6 +28,7 @@ import com.qinwang.intelligence.MyApplication;
 import com.qinwang.intelligence.R;
 import com.qinwang.intelligence.main.fragment.consume.ConsumeFragment;
 import com.qinwang.intelligence.main.fragment.home.HomeFragment;
+import com.qinwang.intelligence.main.fragment.upload.UploadFragment;
 
 public class MainActivity extends BaseActivity {
 
@@ -48,6 +49,7 @@ public class MainActivity extends BaseActivity {
     public static double ADMIN_LONGITUDE = 0;
     public static String CITY_NAME = "北京";
     public static String ROAD_NAME = "东二环";
+    public static String address = "北京市东二环";
     private static final double INTERVAL = 500; //500m
 
     @Override
@@ -182,6 +184,9 @@ public class MainActivity extends BaseActivity {
                     if (DistanceUtil.getDistance(new LatLng(latitude, longitude), new LatLng(ADMIN_LATITUDE, ADMIN_LONGITUDE)) > INTERVAL){
                         ADMIN_LATITUDE = latitude;
                         ADMIN_LONGITUDE = longitude;
+                    }
+                    if (address != addr){
+                        address = addr;
                     }
                     HomeFragment.mBaiduMap.setMyLocationData(myLocationData);
                     HomeFragment.mBaiduMap.animateMapStatus(u);                             //设置地图位置

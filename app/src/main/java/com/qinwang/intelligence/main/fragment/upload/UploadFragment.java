@@ -23,6 +23,7 @@ import androidx.annotation.Nullable;
 import com.mylhyl.circledialog.CircleDialog;
 import com.qinwang.base.BaseFragment;
 import com.qinwang.intelligence.R;
+import com.qinwang.intelligence.main.MainActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -32,7 +33,7 @@ public class UploadFragment extends BaseFragment implements UploadingConstract.U
 
     private final String TAG = "UploadingFragment";
 
-    private EditText carNumber, carColor, otherType,
+    public static EditText carNumber, carColor, otherType,
             mistakeTime, mistakePlace,
             mistakeDescribe, policeName;
     private LinearLayout layoutOtherType;
@@ -77,6 +78,7 @@ public class UploadFragment extends BaseFragment implements UploadingConstract.U
         otherType = getView().findViewById(R.id.otherType);
         mistakeTime = getView().findViewById(R.id.mistakeTime);
         mistakePlace = getView().findViewById(R.id.mistake_place);
+        mistakePlace.setText(MainActivity.address);
         mistakeDescribe = getView().findViewById(R.id.mistake_describe);
         policeName = getView().findViewById(R.id.policeName);
 
