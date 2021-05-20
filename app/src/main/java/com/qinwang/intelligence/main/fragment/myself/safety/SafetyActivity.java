@@ -4,12 +4,13 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.TextView;
 
 import com.qinwang.base.BaseActivity;
 import com.qinwang.intelligence.R;
 
-public class SafetyActivity extends BaseActivity {
+public class SafetyActivity extends BaseActivity implements View.OnClickListener {
 
     private TextView toolbar_title, safetyUserName, safetyUserSex, safetyUserID,
             safetyPassWord, safetyTel, safetyHome;
@@ -43,5 +44,14 @@ public class SafetyActivity extends BaseActivity {
         safetyPassWord.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
         safetyTel.setText(sharedPreferences.getString("phone", null));
         safetyHome.setText(sharedPreferences.getString("home", null));
+
+        findViewById(R.id.makeSure).setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view.getId() == R.id.makeSure){
+            finish();
+        }
     }
 }
