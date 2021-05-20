@@ -26,6 +26,7 @@ import com.qinwang.base.BaseActivity;
 import com.qinwang.intelligence.BuildConfig;
 import com.qinwang.intelligence.MyApplication;
 import com.qinwang.intelligence.R;
+import com.qinwang.intelligence.main.fragment.consume.ConsumeFragment;
 import com.qinwang.intelligence.main.fragment.home.HomeFragment;
 
 public class MainActivity extends BaseActivity {
@@ -45,6 +46,8 @@ public class MainActivity extends BaseActivity {
 
     public static double ADMIN_LATITUDE = 0;
     public static double ADMIN_LONGITUDE = 0;
+    public static String CITY_NAME = "北京";
+    public static String ROAD_NAME = "东二环";
     private static final double INTERVAL = 500; //500m
 
     @Override
@@ -166,7 +169,12 @@ public class MainActivity extends BaseActivity {
                 ADMIN_LONGITUDE = longitude;
 //                HomeFragment.getMsg(MainActivity.this, new LatLng(ADMIN_LATITUDE, ADMIN_LONGITUDE));
             }
-
+            if (city != CITY_NAME || street != ROAD_NAME){
+                CITY_NAME = city;
+                ROAD_NAME = street;
+                ConsumeFragment.cityName.setText(CITY_NAME);
+                ConsumeFragment.roadName.setText(ROAD_NAME);
+            }
             if (bdLocation == null){
                 return;
             }
@@ -187,7 +195,10 @@ public class MainActivity extends BaseActivity {
                     HomeFragment.mBaiduMap.setMyLocationData(myLocationData);
                     HomeFragment.mBaiduMap.animateMapStatus(u);                             //设置地图位置
                 }else {
-
+                    ConsumeFragment.mBaiduMap.setMyLocationData(myLocationData);
+                    ConsumeFragment.mBaiduMap.animateMapStatus(u);                             //设置地图位置
+                    ConsumeFragment.getRoadMsg(MainActivity.this, city, street);
+//                    ConsumeFragment.getRoadMsg(MainActivity.this, "北京市", "东二环");
                 }
             }
         }

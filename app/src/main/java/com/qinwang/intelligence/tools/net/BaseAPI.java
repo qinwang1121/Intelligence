@@ -34,7 +34,7 @@ public class BaseAPI {
      * @return
      */
     public final static String USER_WEB_ROAD_SERVE(String road_name, String city){
-        return "http://api.map.baidu.com/traffic/v1/road?road_name= " + road_name +
+        return "http://api.map.baidu.com/traffic/v1/road?road_name=" + road_name +
                 "&city=" + city +
                 "&ak=" + MyApplication.SERVE_KEY;
     }
