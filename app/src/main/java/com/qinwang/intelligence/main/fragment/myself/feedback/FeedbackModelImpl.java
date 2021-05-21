@@ -38,7 +38,8 @@ public class FeedbackModelImpl extends BaseModelImpl implements FeedbackContract
         if (! TextUtils.isEmpty(Email) && !isEmail(Email)){
             listener.onEmailError(activity.getApplicationContext()
                     .getString(R.string.feedback_mail_error));
-        }else {
+        }
+        if (!TextUtils.isEmpty(message) && !TextUtils.isEmpty(Email) && isEmail(Email)){
             map.put("Email", Email);
             map.put("message", message);
             new Thread(new Runnable() {
