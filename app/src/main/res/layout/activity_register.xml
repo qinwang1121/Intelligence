@@ -3,240 +3,257 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.qinwang.intelligence.register.RegisterActivity">
+    android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+    <VideoView
+        android:id="@+id/videoView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:id="@+id/register_username_linear"
-            android:layout_width="fill_parent"
-            android:layout_height="37dip"
-            android:layout_marginBottom="10dip"
-            android:layout_marginTop="100dip"
-            android:background="@drawable/register_edit_back"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="20dip"
-                android:layout_height="20dip"
-                android:layout_marginLeft="10dip"
-                android:layout_marginRight="10dip"
-                android:layout_marginTop="7dip"
-                android:background="@mipmap/username_bg" />
-
-            <EditText
-                android:id="@+id/register_username_editText"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:background="@null"
-                android:gravity="center_vertical"
-                android:hint="输入用户名"
-                android:inputType="none"
-                android:singleLine="true"
-                android:textColor="@android:color/black"
-                android:textSize="14dip" />
-
-        </LinearLayout>
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/videoView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/videoView">
 
         <LinearLayout
-            android:id="@+id/register_password_linear"
-            android:layout_width="fill_parent"
-            android:layout_height="37dip"
-            android:layout_marginBottom="10dip"
-            android:layout_marginTop="10dip"
-            android:background="@drawable/register_edit_back"
-            android:orientation="horizontal">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="20dip"
-                android:layout_height="20dip"
-                android:layout_marginLeft="10dip"
-                android:layout_marginRight="10dip"
-                android:layout_marginTop="7dip"
-                android:background="@mipmap/password_bg" />
-
-            <EditText
-                android:id="@+id/register_password_editText"
+            <LinearLayout
+                android:id="@+id/register_username_linear"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:background="@null"
-                android:digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
-                android:gravity="center_vertical"
-                android:hint="输入密码"
-                android:inputType="none"
-                android:singleLine="true"
-                android:textColor="@android:color/black"
-                android:textSize="14dip" />
-        </LinearLayout>
+                android:layout_height="37dip"
+                android:layout_marginBottom="10dip"
+                android:layout_marginTop="100dip"
+                android:background="@drawable/register_edit_back"
+                android:orientation="horizontal">
 
-        <LinearLayout
-            android:id="@+id/register_rePassWord_linear"
-            android:layout_width="fill_parent"
-            android:layout_height="38dip"
-            android:layout_marginBottom="10dip"
-            android:layout_marginTop="10dip"
-            android:background="@drawable/register_edit_back"
-            android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="20dip"
+                    android:layout_height="20dip"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginRight="10dip"
+                    android:layout_marginTop="7dip"
+                    android:background="@mipmap/username_bg" />
 
-            <ImageView
-                android:layout_width="20dip"
-                android:layout_height="20dip"
-                android:layout_marginLeft="10dip"
-                android:layout_marginRight="10dip"
-                android:layout_marginTop="7dip"
-                android:background="@mipmap/password_bg" />
+                <EditText
+                    android:id="@+id/register_username_editText"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="输入用户名"
+                    android:inputType="none"
+                    android:singleLine="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="14dip" />
 
-            <EditText
-                android:id="@+id/register_rePassWord_editText"
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/register_password_linear"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:background="@null"
-                android:digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
-                android:gravity="center_vertical"
-                android:hint="再次输入密码"
-                android:inputType="none"
-                android:singleLine="true"
-                android:textColor="@android:color/black"
-                android:textSize="14dip" />
-        </LinearLayout>
+                android:layout_height="37dip"
+                android:layout_marginBottom="10dip"
+                android:layout_marginTop="10dip"
+                android:background="@drawable/register_edit_back"
+                android:orientation="horizontal">
 
-        <LinearLayout
-            android:id="@+id/register_sex_linear"
-            android:layout_width="fill_parent"
-            android:layout_height="38dip"
-            android:layout_marginBottom="10dip"
-            android:layout_marginTop="10dip"
-            android:background="@drawable/register_edit_back"
-            android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="20dip"
+                    android:layout_height="20dip"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginRight="10dip"
+                    android:layout_marginTop="7dip"
+                    android:background="@mipmap/password_bg" />
 
-            <ImageView
-                android:layout_width="20dip"
-                android:layout_height="20dip"
-                android:layout_marginLeft="10dip"
-                android:layout_marginRight="10dip"
-                android:layout_marginTop="7dip"
-                android:background="@mipmap/sex_bg" />
+                <EditText
+                    android:id="@+id/register_password_editText"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@null"
+                    android:digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+                    android:gravity="center_vertical"
+                    android:hint="输入密码"
+                    android:inputType="none"
+                    android:singleLine="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="14dip" />
+            </LinearLayout>
 
-            <EditText
-                android:id="@+id/register_sex_editText"
+            <LinearLayout
+                android:id="@+id/register_rePassWord_linear"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:background="@null"
-                android:gravity="center_vertical"
-                android:hint="性别"
-                android:inputType="none"
-                android:singleLine="true"
-                android:textColor="@android:color/black"
-                android:textSize="14dip" />
-        </LinearLayout>
+                android:layout_height="38dip"
+                android:layout_marginBottom="10dip"
+                android:layout_marginTop="10dip"
+                android:background="@drawable/register_edit_back"
+                android:orientation="horizontal">
 
-        <LinearLayout
-            android:id="@+id/register_ID_linear"
-            android:layout_width="fill_parent"
-            android:layout_height="38dip"
-            android:layout_marginBottom="10dip"
-            android:layout_marginTop="10dip"
-            android:background="@drawable/register_edit_back"
-            android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="20dip"
+                    android:layout_height="20dip"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginRight="10dip"
+                    android:layout_marginTop="7dip"
+                    android:background="@mipmap/password_bg" />
 
-            <ImageView
-                android:layout_width="20dip"
-                android:layout_height="20dip"
-                android:layout_marginLeft="10dip"
-                android:layout_marginRight="10dip"
-                android:layout_marginTop="7dip"
-                android:background="@mipmap/id_bg" />
+                <EditText
+                    android:id="@+id/register_rePassWord_editText"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@null"
+                    android:digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+                    android:gravity="center_vertical"
+                    android:hint="再次输入密码"
+                    android:inputType="none"
+                    android:singleLine="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="14dip" />
+            </LinearLayout>
 
-            <EditText
-                android:id="@+id/register_ID_editText"
+            <LinearLayout
+                android:id="@+id/register_sex_linear"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:background="@null"
-                android:digits="0123456789"
-                android:gravity="center_vertical"
-                android:hint="身份证号"
-                android:inputType="none"
-                android:singleLine="true"
-                android:textColor="@android:color/black"
-                android:textSize="14dip" />
-        </LinearLayout>
+                android:layout_height="38dip"
+                android:layout_marginBottom="10dip"
+                android:layout_marginTop="10dip"
+                android:background="@drawable/register_edit_back"
+                android:orientation="horizontal">
 
-        <LinearLayout
-            android:id="@+id/register_tel_linear"
-            android:layout_width="fill_parent"
-            android:layout_height="38dip"
-            android:layout_marginBottom="10dip"
-            android:layout_marginTop="10dip"
-            android:background="@drawable/register_edit_back"
-            android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="20dip"
+                    android:layout_height="20dip"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginRight="10dip"
+                    android:layout_marginTop="7dip"
+                    android:background="@mipmap/sex_bg" />
 
-            <ImageView
-                android:layout_width="20dip"
-                android:layout_height="20dip"
-                android:layout_marginLeft="10dip"
-                android:layout_marginRight="10dip"
-                android:layout_marginTop="7dip"
-                android:background="@mipmap/tel_bg" />
+                <EditText
+                    android:id="@+id/register_sex_editText"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="性别"
+                    android:inputType="none"
+                    android:singleLine="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="14dip" />
+            </LinearLayout>
 
-            <EditText
-                android:id="@+id/register_tel_editText"
+            <LinearLayout
+                android:id="@+id/register_ID_linear"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:background="@null"
-                android:digits="0123456789"
-                android:gravity="center_vertical"
-                android:hint="电话"
-                android:inputType="none"
-                android:singleLine="true"
-                android:textColor="@android:color/black"
-                android:textSize="14dip" />
-        </LinearLayout>
+                android:layout_height="38dip"
+                android:layout_marginBottom="10dip"
+                android:layout_marginTop="10dip"
+                android:background="@drawable/register_edit_back"
+                android:orientation="horizontal">
 
-        <LinearLayout
-            android:id="@+id/register_address_linear"
-            android:layout_width="fill_parent"
-            android:layout_height="38dip"
-            android:layout_marginBottom="10dip"
-            android:layout_marginTop="10dip"
-            android:background="@drawable/register_edit_back"
-            android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="20dip"
+                    android:layout_height="20dip"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginRight="10dip"
+                    android:layout_marginTop="7dip"
+                    android:background="@mipmap/id_bg" />
 
-            <ImageView
-                android:layout_width="20dip"
-                android:layout_height="20dip"
-                android:layout_marginLeft="10dip"
-                android:layout_marginRight="10dip"
-                android:layout_marginTop="7dip"
-                android:background="@mipmap/address_bg" />
+                <EditText
+                    android:id="@+id/register_ID_editText"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@null"
+                    android:digits="0123456789"
+                    android:gravity="center_vertical"
+                    android:hint="身份证号"
+                    android:inputType="none"
+                    android:singleLine="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="14dip" />
+            </LinearLayout>
 
-            <EditText
-                android:id="@+id/register_address_editText"
+            <LinearLayout
+                android:id="@+id/register_tel_linear"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:background="@null"
+                android:layout_height="38dip"
+                android:layout_marginBottom="10dip"
+                android:layout_marginTop="10dip"
+                android:background="@drawable/register_edit_back"
+                android:orientation="horizontal">
 
-                android:gravity="center_vertical"
-                android:hint="现居住地（市）"
-                android:inputType="none"
-                android:singleLine="true"
-                android:textColor="@android:color/black"
-                android:textSize="14dip" />
+                <ImageView
+                    android:layout_width="20dip"
+                    android:layout_height="20dip"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginRight="10dip"
+                    android:layout_marginTop="7dip"
+                    android:background="@mipmap/tel_bg" />
+
+                <EditText
+                    android:id="@+id/register_tel_editText"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@null"
+                    android:digits="0123456789"
+                    android:gravity="center_vertical"
+                    android:hint="电话"
+                    android:inputType="none"
+                    android:singleLine="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="14dip" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/register_address_linear"
+                android:layout_width="fill_parent"
+                android:layout_height="38dip"
+                android:layout_marginBottom="10dip"
+                android:layout_marginTop="10dip"
+                android:background="@drawable/register_edit_back"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dip"
+                    android:layout_height="20dip"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginRight="10dip"
+                    android:layout_marginTop="7dip"
+                    android:background="@mipmap/address_bg" />
+
+                <EditText
+                    android:id="@+id/register_address_editText"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@null"
+
+                    android:gravity="center_vertical"
+                    android:hint="现居住地（市）"
+                    android:inputType="none"
+                    android:singleLine="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="14dip" />
+            </LinearLayout>
+
+            <Button
+                android:layout_marginTop="30dp"
+                android:id="@+id/register_register_button"
+                android:layout_width="fill_parent"
+                android:layout_height="35dip"
+                android:layout_gravity="center"
+                android:background="@drawable/login_button_bg"
+                android:gravity="center"
+                android:text="立 即 注 册"
+                android:textColor="#FFFFFF"
+                android:textSize="16dip" />
         </LinearLayout>
-
-        <Button
-            android:layout_marginTop="30dp"
-            android:id="@+id/register_register_button"
-            android:layout_width="fill_parent"
-            android:layout_height="35dip"
-            android:layout_gravity="center"
-            android:background="@drawable/login_button_bg"
-            android:gravity="center"
-            android:text="立 即 注 册"
-            android:textColor="#FFFFFF"
-            android:textSize="16dip" />
-    </LinearLayout>
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

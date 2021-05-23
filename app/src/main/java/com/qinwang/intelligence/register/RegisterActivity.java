@@ -1,12 +1,15 @@
 package com.qinwang.intelligence.register;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -22,6 +25,7 @@ import java.util.LinkedHashMap;
 
 public class RegisterActivity extends BaseActivity implements View.OnClickListener {
 
+    private VideoView videoView;
     private EditText register_userName, register_passWork, register_repassWork, register_sex, register_userId, register_tel, register_aaddress;
     private Button button;
 
@@ -43,6 +47,30 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         register_userId = (EditText)findViewById(R.id.register_ID_editText);
         register_tel = (EditText)findViewById(R.id.register_tel_editText);
         register_aaddress = (EditText)findViewById(R.id.register_address_editText);
+
+        videoView = (VideoView)findViewById(R.id.videoView);
+        Provide();
+    }
+
+    public void Provide(){
+        //设置播放加载路径
+        videoView.setVideoURI(Uri.parse("android.resource://"+getPackageName()+"/raw/" + R.raw.register_bg));
+        //播放
+        videoView.start();
+        //循环播放
+        videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+                videoView.start();
+            }
+        });
+        //设置为静音
+        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                mp.setVolume(0f, 0f);
+            }
+        });
     }
 
     public void Register(final LinkedHashMap<String, String> map){
@@ -135,4 +163,47 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             Register(map);
         }
     }
+
+    @Override
+    protected void onStart() {
+        // TODO Auto-generated method stub
+        super.onStart();
+        Provide();
+    }
+
+    @Override
+    protected void onResume() {
+        // TODO Auto-generated method stub
+        super.onResume();
+        Provide();
+    }
+
+    @Override
+    protected void onPause() {
+        // TODO Auto-generated method stub
+        super.onPause();
+        Provide();
+    }
+
+    @Override
+    protected void onStop() {
+        // TODO Auto-generated method stub
+        super.onStop();
+        Provide();
+    }
+
+    @Override
+    protected void onRestart() {
+        // TODO Auto-generated method stub
+        super.onRestart();
+        Provide();
+    }
+
+    @Override
+    protected void onDestroy() {
+        // TODO Auto-generated method stub
+        super.onDestroy();
+        Provide();
+    }
+
 }
