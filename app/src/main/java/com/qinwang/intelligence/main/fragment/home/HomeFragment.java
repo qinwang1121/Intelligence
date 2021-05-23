@@ -92,7 +92,7 @@ public class HomeFragment extends BaseFragment {
         mBaiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);
         MapStatus mMapStatus = new MapStatus
                 .Builder()
-                .zoom(20)                                               //设置级别，放大地图到20倍
+                .zoom(18)                                               //设置级别，放大地图到18倍
                 .build();
         //定义MapStatusUpdate对象，以便描述地图状态将要发生的变化
         MapStatusUpdate mMapStatusUpdate = MapStatusUpdateFactory.newMapStatus(mMapStatus);

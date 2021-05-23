@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name1">IntelligenceAdmin</string>
-    <string name="app_name2">IntelligenceUser</string>
+    <string name="app_name1">交警端</string>
+    <string name="app_name2">市民端</string>
 
     <string name="admin_AK">Y4c93TlAV7FLh4ITPVDGqmaAW1b8jGTN</string>
     <string name="user_AK">ztFTWdtYZjHkS8imXYGiTwGE2RdBGWD4</string>
@@ -127,7 +127,7 @@
     
     <string name="banner_roadName">道路名称:</string>
     <string name="banner_roadMsg">道路拥堵详情:</string>
-    <string name="banner_roadEvaluate">预计通过所需时间(m/min):</string>
+    <string name="banner_roadEvaluate">预计通过所需时间(min):</string>
     <string name="banner_roadDistance">拥堵距离(m):</string>
     <string name="banner_roadSpeed">平均通行速度(km/h):</string>
     <string name="banner_roadTrend">较10分钟前的趋势:</string>

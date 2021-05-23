@@ -69,7 +69,15 @@ public class BannerListAdapter extends BaseAdapter {
         mViewHolder.roadEva.setText(String.format("%.2f", mCongestionSections.getCongestion_distance() / (mCongestionSections.getSpeed()  * 1000 / 60)));
         mViewHolder.roadSpeed.setText(String.valueOf(mCongestionSections.getSpeed()));
         mViewHolder.roadDis.setText(String.valueOf(mCongestionSections.getCongestion_distance()));
-        mViewHolder.roadTrend.setText(mCongestionSections.getCongestion_trend());
+        if ("SAME".equals(mCongestionSections.getCongestion_trend())){
+            mViewHolder.roadTrend.setText("持平");
+        }else if ("WORSR".equals(mCongestionSections.getCongestion_trend())){
+            mViewHolder.roadTrend.setText("加重");
+        }else if ("BETTER".equals(mCongestionSections.getCongestion_trend())){
+            mViewHolder.roadTrend.setText("缓解");
+        }else {
+            mViewHolder.roadTrend.setText(mCongestionSections.getCongestion_trend());
+        }
         mViewHolder.roadDes.setText(mCongestionSections.getSection_desc());
         return view;
     }

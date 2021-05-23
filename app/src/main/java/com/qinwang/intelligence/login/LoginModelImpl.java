@@ -10,6 +10,7 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.qinwang.base.BaseModelImpl;
+import com.qinwang.intelligence.BuildConfig;
 import com.qinwang.intelligence.R;
 import com.qinwang.intelligence.tools.bean.Response;
 import com.qinwang.intelligence.tools.bean.User;
@@ -51,7 +52,15 @@ public class LoginModelImpl extends BaseModelImpl implements LoginContract.Login
                             activity.runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    listener.onSuccess(userResponse.getMsg(), userResponse.getData());
+                                    if (BuildConfig.PURPOSE.equals("admin")){
+                                        if ("管理员".equals(userResponse.getData().getPower())){
+                                            listener.onSuccess(userResponse.getMsg(), userResponse.getData());
+                                        }else {
+                                            listener.onFail("", "你的身份不是管理者，不能登录");
+                                        }
+                                    }else {
+                                        listener.onSuccess(userResponse.getMsg(), userResponse.getData());
+                                    }
                                 }
                             });
                         }else {

@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,6 +45,7 @@ public class ConsumeFragment extends BaseFragment {
 
     private static MapView mMapView = null;
     public static BaiduMap mBaiduMap;
+    private EditText inputRoadName;
     public static TextView cityName, roadName, roadMsg;
     private static ListView roadList;
     private static Activity activity = null;
@@ -64,12 +67,23 @@ public class ConsumeFragment extends BaseFragment {
     public void initView(){
         mMapView = getView().findViewById(R.id.mapView);
         mMapView.showZoomControls(false);   //隐藏缩放按钮
-
+        inputRoadName = getView().findViewById(R.id.inputRoadName);
         cityName = getView().findViewById(R.id.cityName);
         roadName = getView().findViewById(R.id.roadName);
         roadMsg = getView().findViewById(R.id.roadMsg);
         roadList = getView().findViewById(R.id.roadList);
         roadList.setVisibility(View.GONE);
+        getView().findViewById(R.id.roadSearch).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getRoadMsg(activity, cityName.getText().toString(), inputRoadName.getText().toString());
+//                if (inputRoadName.getText().toString() == null){
+//                    inputRoadName.setError("请输入路名");
+//                }else {
+//
+//                }
+            }
+        });
     }
 
     public void setMap(){
@@ -78,7 +92,7 @@ public class ConsumeFragment extends BaseFragment {
         mBaiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);
         MapStatus mMapStatus = new MapStatus
                 .Builder()
-                .zoom(20)                                               //设置级别，放大地图到20倍
+                .zoom(18)                                               //设置级别，放大地图到18倍
                 .build();
         //定义MapStatusUpdate对象，以便描述地图状态将要发生的变化
         MapStatusUpdate mMapStatusUpdate = MapStatusUpdateFactory.newMapStatus(mMapStatus);
