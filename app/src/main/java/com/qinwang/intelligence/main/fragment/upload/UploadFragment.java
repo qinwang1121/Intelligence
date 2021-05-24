@@ -294,6 +294,7 @@ public class UploadFragment extends BaseFragment implements UploadingConstract.U
     public void hideLayoutOtherType() {
         layoutOtherType.setVisibility(View.GONE);
         otherType.setText(null);
+        isClick = false;
         getCarType("");
     }
 

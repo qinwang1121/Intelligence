@@ -42,17 +42,17 @@ public class SafetyActivity extends BaseActivity implements View.OnClickListener
         toolbar_title.setGravity(Gravity.CENTER);
 
         safetyUserName = findViewById(R.id.userName);
-        safetyUserName.setOnClickListener(this);
+        findViewById(R.id.layoutUserName).setOnClickListener(this);
         safetyUserSex = findViewById(R.id.userGander);
-        safetyUserSex.setOnClickListener(this);
+        findViewById(R.id.laoutSex).setOnClickListener(this);
         safetyUserID = findViewById(R.id.userID);
-        safetyUserID.setOnClickListener(this);
+        findViewById(R.id.layoutID).setOnClickListener(this);
         safetyPassWord = findViewById(R.id.userPassWord);
-        safetyPassWord.setOnClickListener(this);
+        findViewById(R.id.layoutPassWord).setOnClickListener(this);
         safetyTel = findViewById(R.id.userTel);
-        safetyTel.setOnClickListener(this);
+        findViewById(R.id.layoutTEL).setOnClickListener(this);
         safetyHome = findViewById(R.id.userHome);
-        safetyHome.setOnClickListener(this);
+        findViewById(R.id.layoutHome).setOnClickListener(this);
 
         sharedPreferences = getSharedPreferences("user", MODE_PRIVATE);
         safetyUserName.setText(sharedPreferences.getString("userName", null));
@@ -69,16 +69,16 @@ public class SafetyActivity extends BaseActivity implements View.OnClickListener
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.userName:
-            case R.id.userGander:
-            case R.id.userID:
+            case R.id.layoutUserName:
+            case R.id.laoutSex:
+            case R.id.layoutID:
                 new CircleDialog.Builder(this)
                         .setTitle("提示")
                         .setText("不可更改")
                         .setPositive("确定",null)
                         .show();
                 break;
-            case R.id.userPassWord:
+            case R.id.layoutPassWord:
                 new CircleDialog.Builder(this)
                         .setTitle("修改密码")
                         .setInputHint("请输入新的密码")
@@ -101,7 +101,7 @@ public class SafetyActivity extends BaseActivity implements View.OnClickListener
                         .setNegative("取消", null)
                         .show();
                 break;
-            case R.id.userTel:
+            case R.id.layoutTEL:
                 new CircleDialog.Builder(this)
                         .setTitle("电话号码修改")
                         .setInputHint("请输入新的电话号码")
@@ -122,7 +122,7 @@ public class SafetyActivity extends BaseActivity implements View.OnClickListener
                         .setNegative("取消", null)
                         .show();
                 break;
-            case R.id.userHome:
+            case R.id.layoutHome:
                 new CircleDialog.Builder(this)
                         .setTitle("家庭住址修改")
                         .setInputHint("请输入新的家庭住址")

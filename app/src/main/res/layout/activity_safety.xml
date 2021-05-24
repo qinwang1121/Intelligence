@@ -22,6 +22,7 @@
         app:srcCompat="@drawable/myself_user"/>
 
     <LinearLayout
+        android:id="@+id/layoutUserName"
         android:layout_width="match_parent"
         android:layout_height="38dip"
         android:layout_marginTop="10dip"
@@ -55,6 +56,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/laoutSex"
         android:layout_width="match_parent"
         android:layout_height="38dip"
         android:layout_marginTop="10dip"
@@ -88,6 +90,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/layoutID"
         android:layout_width="match_parent"
         android:layout_height="38dip"
         android:layout_marginTop="10dip"
@@ -121,6 +124,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/layoutPassWord"
         android:layout_width="match_parent"
         android:layout_height="38dip"
         android:layout_marginTop="10dip"
@@ -154,6 +158,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/layoutTEL"
         android:layout_width="match_parent"
         android:layout_height="38dip"
         android:layout_marginTop="10dip"
@@ -187,6 +192,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/layoutHome"
         android:layout_width="match_parent"
         android:layout_height="38dip"
         android:layout_marginTop="10dip"
