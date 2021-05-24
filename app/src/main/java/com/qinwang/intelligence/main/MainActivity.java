@@ -191,8 +191,8 @@ public class MainActivity extends BaseActivity {
                     HomeFragment.mBaiduMap.setMyLocationData(myLocationData);
                     HomeFragment.mBaiduMap.animateMapStatus(u);                             //设置地图位置
                     HomeFragment.getMsg(MainActivity.this, MainActivity.ADMIN_LATITUDE + "," + MainActivity.ADMIN_LONGITUDE);
-                    HomeFragment.getMsg(MainActivity.this, "38.894193,121.54748");
-                    HomeFragment.getMsg(MainActivity.this, "39.912078,116.464303"); //北京
+//                    HomeFragment.getMsg(MainActivity.this, "38.894193,121.54748");
+//                    HomeFragment.getMsg(MainActivity.this, "39.912078,116.464303"); //北京
                 }else {
                     if (city != CITY_NAME || street != ROAD_NAME){
                         CITY_NAME = city;
