@@ -35,6 +35,7 @@
 
     <!-- CircleDialog -->
     <string name="Dialog_title">提示</string>
+    <string name="Dialog_CityName">请正确输入道路名称！！！</string>
     <string name="Dialog_Examine_text">已是最新版本1.0</string>
     <string name="Dialog_text">是否确定退出</string>
     <string name="Dialog_immutable">不可更改</string>
@@ -145,8 +146,8 @@
     <string name="banner_roadDesc">路段拥堵描述:</string>
 
     <!-- ConsumeFragment -->
-    <string name="roadName">当前所在街道：</string>
-    <string name="roadMsg">道路情况：</string>
+    <string name="roadName">您当前所在街道：</string>
+    <string name="roadMsg">道路整体通行情况：</string>
 
     <!-- RegisterActivity -->
     <string name="Register_userNameNull">用户名不能为空</string>

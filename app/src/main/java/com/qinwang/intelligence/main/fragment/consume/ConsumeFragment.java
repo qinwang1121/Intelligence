@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentActivity;
 
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.MapPoi;
@@ -24,6 +25,7 @@ import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.model.LatLng;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.mylhyl.circledialog.CircleDialog;
 import com.qinwang.base.BaseFragment;
 import com.qinwang.intelligence.MyApplication;
 import com.qinwang.intelligence.R;
@@ -45,7 +47,7 @@ public class ConsumeFragment extends BaseFragment {
 
     private static MapView mMapView = null;
     public static BaiduMap mBaiduMap;
-    private EditText inputRoadName;
+    private static EditText inputRoadName;
     public static TextView cityName, roadName, roadMsg;
     private static ListView roadList;
     private static Activity activity = null;
@@ -151,29 +153,42 @@ public class ConsumeFragment extends BaseFragment {
 //                            Log.d("xxxxx", String.valueOf(trafficInfo.getStatus()));
 //                            Log.d("xxxxx", trafficInfo.getMessage()
                             Log.d("HOME", trafficInfo.toString());
-                            List<road_traffic> road_traffics = new ArrayList<>();
-                            List<congestion_sections> congestion_sections = new ArrayList<>();
-                            List<road_traffic> road_traffics1 = trafficInfo.getRoad_traffic();
-                            for (int i = 0; i < road_traffics1.size(); i ++) {
-                                if (road_traffics1.get(i).getCongestion_sections() != null){
-                                    road_traffics.add((road_traffic) road_traffics1.get(i));
+                            if(trafficInfo.getStatus() == 0 ){
+                                List<road_traffic> road_traffics = new ArrayList<>();
+                                List<congestion_sections> congestion_sections = new ArrayList<>();
+                                List<road_traffic> road_traffics1 = trafficInfo.getRoad_traffic();
+                                for (int i = 0; i < road_traffics1.size(); i ++) {
+                                    if (road_traffics1.get(i).getCongestion_sections() != null){
+                                        road_traffics.add((road_traffic) road_traffics1.get(i));
+                                    }
                                 }
-                            }
-                            Log.d("HOME", road_traffics.toString());
+                                Log.d("HOME", road_traffics.toString());
 //                                mListView.setAdapter(new TrafficAdapter(activity.getApplicationContext(), road_traffics));
-                            for (int i = 0; i < road_traffics.size(); i ++){
-                                for (int j = 0; j < road_traffics.get(i).getCongestion_sections().size(); j ++){
-                                    congestion_sections.add((com.qinwang.intelligence.tools.bean.congestion_sections) road_traffics.get(i).getCongestion_sections().get(j));
+                                for (int i = 0; i < road_traffics.size(); i ++){
+                                    for (int j = 0; j < road_traffics.get(i).getCongestion_sections().size(); j ++){
+                                        congestion_sections.add((com.qinwang.intelligence.tools.bean.congestion_sections) road_traffics.get(i).getCongestion_sections().get(j));
+                                    }
                                 }
-                            }
-                            evaluation mEvaluation = (evaluation) trafficInfo.getEvaluation();
-                            roadMsg.setText(mEvaluation.getStatus_desc());
-                            if (congestion_sections.size() == 0){
-                                roadList.setVisibility(View.GONE);
-                                roadMsg.setText(mEvaluation.getStatus_desc() + ",请放心通过");
+                                evaluation mEvaluation = (evaluation) trafficInfo.getEvaluation();
+                                roadMsg.setText(mEvaluation.getStatus_desc());
+                                if (congestion_sections.size() == 0){
+                                    roadList.setVisibility(View.GONE);
+                                    roadMsg.setText(mEvaluation.getStatus_desc() + ",请放心通过");
+                                }else {
+                                    roadList.setVisibility(View.VISIBLE);
+                                    roadList.setAdapter(new BannerListAdapter(activity.getApplicationContext(), congestion_sections));
+                                }
                             }else {
-                                roadList.setVisibility(View.VISIBLE);
-                                roadList.setAdapter(new BannerListAdapter(activity.getApplicationContext(), congestion_sections));
+                                new CircleDialog.Builder((FragmentActivity) activity)
+                                        .setTitle(activity.getString(R.string.Dialog_title))
+                                        .setText(activity.getString(R.string.Dialog_CityName))
+                                        .setPositive(activity.getString(R.string.Dialog_true), new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                inputRoadName.setText(null);
+                                            }
+                                        })
+                                        .show();
                             }
                         }
                     });
