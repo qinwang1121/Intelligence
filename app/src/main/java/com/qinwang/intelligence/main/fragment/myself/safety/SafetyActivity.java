@@ -90,12 +90,11 @@ public class SafetyActivity extends BaseActivity implements View.OnClickListener
                                     return;
                                 }else if (text.equals(sharedPreferences.getString("passWord", null))){
                                     showToast("不能与原始密码相同");
+                                    return;
                                 }
                                 final LinkedHashMap<String, String> map = new LinkedHashMap<>();
                                 map.put("passWord", text);
-                                UpDate("passWord", text,BaseAPI.URL_UPDATE_PASSWORD);
-                                sharedPreferences.edit().putString("passWord", text);
-                                safetyPassWord.setText(text);
+                                UpDate(safetyPassWord,"passWord", text,BaseAPI.URL_UPDATE_PASSWORD);
                             }
                         })
                         .setNegative("取消", null)
@@ -114,9 +113,7 @@ public class SafetyActivity extends BaseActivity implements View.OnClickListener
                                 }
                                 final LinkedHashMap<String, String> map = new LinkedHashMap<>();
                                 map.put("phone", text);
-                                UpDate("phone", text, BaseAPI.URL_UPDATE_TEL);
-                                sharedPreferences.edit().putString("phone", text);
-                                safetyTel.setText(text);
+                                UpDate(safetyTel, "phone", text, BaseAPI.URL_UPDATE_TEL);
                             }
                         })
                         .setNegative("取消", null)
@@ -133,9 +130,7 @@ public class SafetyActivity extends BaseActivity implements View.OnClickListener
                                     showToast("内容不能为空");
                                     return;
                                 }
-                                UpDate("home", text, BaseAPI.URL_UPDATE_HOME);
-                                sharedPreferences.edit().putString("home", text);
-                                safetyHome.setText(text);
+                                UpDate(safetyHome,"home", text, BaseAPI.URL_UPDATE_HOME);
                             }
                         })
                         .setNegative("取消", null)
@@ -147,7 +142,7 @@ public class SafetyActivity extends BaseActivity implements View.OnClickListener
         }
     }
 
-    public void UpDate(String msgName, String newMsg, final String url){
+    public void UpDate(final TextView textView, final String msgName, final String newMsg, final String url){
         final LinkedHashMap<String, String> map = new LinkedHashMap<>();
         map.put(msgName,newMsg);
         map.put("id", sharedPreferences.getString("ID", ""));
@@ -164,6 +159,8 @@ public class SafetyActivity extends BaseActivity implements View.OnClickListener
                         public void run() {
                             if (userResponse.isSuccess()){
                                 showToast(userResponse.getMsg());
+                                sharedPreferences.edit().putString(msgName, newMsg);
+                                textView.setText(newMsg);
                             }else {
                                 showToast(userResponse.getMsg());
                             }
