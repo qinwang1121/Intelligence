@@ -73,23 +73,23 @@ public class SafetyActivity extends BaseActivity implements View.OnClickListener
             case R.id.laoutSex:
             case R.id.layoutID:
                 new CircleDialog.Builder(this)
-                        .setTitle("提示")
-                        .setText("不可更改")
-                        .setPositive("确定",null)
+                        .setTitle(getString(R.string.Dialog_title))
+                        .setText(getString(R.string.Dialog_immutable))
+                        .setPositive(getString(R.string.Dialog_true),null)
                         .show();
                 break;
             case R.id.layoutPassWord:
                 new CircleDialog.Builder(this)
-                        .setTitle("修改密码")
-                        .setInputHint("请输入新的密码")
-                        .setPositiveInput("确定", new OnInputClickListener() {
+                        .setTitle(getString(R.string.Dialog_passWordSet))
+                        .setInputHint(getString(R.string.Dialog_passWordHint))
+                        .setPositiveInput(getString(R.string.Dialog_true), new OnInputClickListener() {
                             @Override
                             public void onClick(String text, View v) {
                                 if (TextUtils.isEmpty(text)){
-                                    showToast("密码不能为空");
+                                    showToast(getString(R.string.Dialog_passWordNull));
                                     return;
                                 }else if (text.equals(sharedPreferences.getString("passWord", null))){
-                                    showToast("不能与原始密码相同");
+                                    showToast(getString(R.string.Dialog_passWordError));
                                     return;
                                 }
                                 final LinkedHashMap<String, String> map = new LinkedHashMap<>();
@@ -97,18 +97,18 @@ public class SafetyActivity extends BaseActivity implements View.OnClickListener
                                 UpDate(safetyPassWord,"passWord", text,BaseAPI.URL_UPDATE_PASSWORD);
                             }
                         })
-                        .setNegative("取消", null)
+                        .setNegative(getString(R.string.Dialog_false), null)
                         .show();
                 break;
             case R.id.layoutTEL:
                 new CircleDialog.Builder(this)
-                        .setTitle("电话号码修改")
-                        .setInputHint("请输入新的电话号码")
-                        .setPositiveInput("确定", new OnInputClickListener() {
+                        .setTitle(getString(R.string.Dialog_TELdSet))
+                        .setInputHint(getString(R.string.Dialog_TELHint))
+                        .setPositiveInput(getString(R.string.Dialog_true), new OnInputClickListener() {
                             @Override
                             public void onClick(String text, View v) {
                                 if (TextUtils.isEmpty(text)){
-                                    showToast("内容不能为空");
+                                    showToast(getString(R.string.Dialog_TELNull));
                                     return;
                                 }
                                 final LinkedHashMap<String, String> map = new LinkedHashMap<>();
@@ -116,24 +116,24 @@ public class SafetyActivity extends BaseActivity implements View.OnClickListener
                                 UpDate(safetyTel, "phone", text, BaseAPI.URL_UPDATE_TEL);
                             }
                         })
-                        .setNegative("取消", null)
+                        .setNegative(getString(R.string.Dialog_false), null)
                         .show();
                 break;
             case R.id.layoutHome:
                 new CircleDialog.Builder(this)
-                        .setTitle("家庭住址修改")
-                        .setInputHint("请输入新的家庭住址")
-                        .setPositiveInput("确定", new OnInputClickListener() {
+                        .setTitle(getString(R.string.Dialog_HomedSet))
+                        .setInputHint(getString(R.string.Dialog_HomeHint))
+                        .setPositiveInput(getString(R.string.Dialog_true), new OnInputClickListener() {
                             @Override
                             public void onClick(String text, View v) {
                                 if (TextUtils.isEmpty(text)){
-                                    showToast("内容不能为空");
+                                    showToast(getString(R.string.Dialog_HomeNull));
                                     return;
                                 }
                                 UpDate(safetyHome,"home", text, BaseAPI.URL_UPDATE_HOME);
                             }
                         })
-                        .setNegative("取消", null)
+                        .setNegative(getString(R.string.Dialog_false), null)
                         .show();
                 break;
             case R.id.makeSure:

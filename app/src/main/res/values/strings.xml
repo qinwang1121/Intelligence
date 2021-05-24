@@ -37,6 +37,17 @@
     <string name="Dialog_title">提示</string>
     <string name="Dialog_Examine_text">已是最新版本1.0</string>
     <string name="Dialog_text">是否确定退出</string>
+    <string name="Dialog_immutable">不可更改</string>
+    <string name="Dialog_passWordSet">修改密码</string>
+    <string name="Dialog_passWordHint">请输入新的密码</string>
+    <string name="Dialog_passWordNull">密码不能为空</string>
+    <string name="Dialog_passWordError">不能与原始密码相同</string>
+    <string name="Dialog_TELdSet">电话号码修改</string>
+    <string name="Dialog_TELHint">请输入新的电话号码</string>
+    <string name="Dialog_TELNull">电话号不能为空</string>
+    <string name="Dialog_HomedSet">现居住地址修改</string>
+    <string name="Dialog_HomeHint">请输入新的住址</string>
+    <string name="Dialog_HomeNull">现住址不能为空</string>
     <string name="Dialog_feedback_number_error">字数已超过200</string>
     <string name="Dialog_true">确定</string>
     <string name="Dialog_false">取消</string>
@@ -124,7 +135,7 @@
 
     <!-- HomeFragment -->
     <string name="trafficInfo">道路信息</string>
-    
+    <string name="road1000">当前位置1000米周围街道情况：</string>
     <string name="banner_roadName">道路名称:</string>
     <string name="banner_roadMsg">道路拥堵详情:</string>
     <string name="banner_roadEvaluate">预计通过所需时间(min):</string>
@@ -132,4 +143,20 @@
     <string name="banner_roadSpeed">平均通行速度(km/h):</string>
     <string name="banner_roadTrend">较10分钟前的趋势:</string>
     <string name="banner_roadDesc">路段拥堵描述:</string>
+
+    <!-- ConsumeFragment -->
+    <string name="roadName">当前所在街道：</string>
+    <string name="roadMsg">道路情况：</string>
+
+    <!-- RegisterActivity -->
+    <string name="Register_userNameNull">用户名不能为空</string>
+    <string name="Register_passWordNull">密码不能为空</string>
+    <string name="Register_SurePassWordNull">确认密码不能为空</string>
+    <string name="Register_passWordError">两次密码输入不一致</string>
+    <string name="Register_userIDNull">身份证号不能为空</string>
+    <string name="Register_userIDError">请正确填写身份证号</string>
+    <string name="Register_TELNull">电话不能为空</string>
+    <string name="Register_TELError">手机号的长度只能为11位</string>
+    <string name="Register_HomeNull">现居住地不能为空</string>
+    <string name="Register_userPower">用户</string>
 </resources>

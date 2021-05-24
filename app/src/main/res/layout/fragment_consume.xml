@@ -32,7 +32,7 @@
                 android:id="@+id/textView31"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="当前所在街道："
+                android:text="@string/roadName"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -64,7 +64,7 @@
                 android:id="@+id/textView35"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="道路情况："
+                android:text="@string/roadMsg"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 

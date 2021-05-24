@@ -98,12 +98,12 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                             }
                         });
                     }
-                }catch (Exception e){
+                }catch (final Exception e){
                     e.printStackTrace();
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            showToast(getString(R.string.netWorkError));
+                            showToast(e.getMessage());
                         }
                     });
                 }
@@ -115,41 +115,44 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     public void onClick(View view) {
         if (view.getId() == R.id.register_register_button){
             if (TextUtils.isEmpty(register_userName.getText().toString())){
-                register_userName.setError("用户名不能为空");
+                register_userName.setError(getString(R.string.Register_userNameNull));
                 return;
             }
             if (TextUtils.isEmpty(register_passWork.getText().toString())){
-                register_passWork.setError("密码不能为空");
+                register_passWork.setError(getString(R.string.Register_passWordNull));
                 return;
             }
             if (TextUtils.isEmpty(register_repassWork.getText().toString())){
-                register_repassWork.setError("确认密码不能为空");
+                register_repassWork.setError(getString(R.string.Register_SurePassWordNull));
+                return;
             }
             if (! register_passWork.getText().toString().equals(register_repassWork.getText().toString())){
-                register_repassWork.setError("两次密码输入不一致");
+                register_repassWork.setError("");
                 return;
             }
             if (TextUtils.isEmpty(register_sex.getText().toString())){
-                register_sex.setError("性别不能为空");
+                register_sex.setError(getString(R.string.Register_passWordError));
                 return;
             }
             if (TextUtils.isEmpty(register_userId.getText().toString())){
-                register_userId.setError("身份证号不能为空");
+                register_userId.setError(getString(R.string.Register_userIDNull));
+                return;
+            }if (register_userId.getText().toString().length() != 18){
+                register_userId.setError(getString(R.string.Register_userIDError));
+                showToast(getString(R.string.Register_userIDError));
                 return;
             }
             if (TextUtils.isEmpty(register_tel.getText().toString())){
-                register_tel.setError("电话不能为空");
+                register_tel.setError(getString(R.string.Register_TELNull));
                 return;
             }
             if (register_tel.getText().toString().length() != 11){
-                register_tel.setError("手机号的长度只能为11位");
-                Toast.makeText(RegisterActivity.this,
-                        "手机号的长度只能为11位",
-                        Toast.LENGTH_SHORT).show();
+                register_tel.setError(getString(R.string.Register_TELError));
+                showToast(getString(R.string.Register_TELError));
                 return;
             }
             if (TextUtils.isEmpty(register_aaddress.getText().toString())){
-                register_aaddress.setError("现居住城市不能为空");
+                register_aaddress.setError(getString(R.string.Register_HomeNull));
                 return;
             }
             final LinkedHashMap<String, String> map = new LinkedHashMap<>();
@@ -159,7 +162,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             map.put("ID", register_userId.getText().toString());
             map.put("phone", register_tel.getText().toString());
             map.put("home", register_aaddress.getText().toString());
-            map.put("power", "用户");
+            map.put("power", getString(R.string.Register_userPower));
             Register(map);
         }
     }
